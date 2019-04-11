@@ -1,0 +1,56 @@
+{
+  "name": "@migenius/realityserver-extras",
+  "version": "1.0.0",
+  "description": "Classes to assist in the manipulation of RealityServer scene elements",
+  "main": "lib/umd/realityserver-extras.js",
+  "browser": "lib/umd/realityserver-extras.js",
+  "umd:main": "lib/umd/realityserver-extras.js",
+  "module": "lib/esm/realityserver-extras.js",
+  "jsnext:main": "lib/esm/realityserver-extras.js",
+  "react-native": "lib/esm/realityserver-extras.js",
+  "unpkg": "lib/umd/realityserver-extras.min.js",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "eslint": "eslint src scripts test",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/migenius/realityserver-extras.git"
+  },
+  "keywords": [
+    "realityserver",
+    "javascript",
+    "client",
+    "extras",
+    "camera",
+    "transform"
+  ],
+  "author": "Brendan Hack <brendan@migenius.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/migenius/realityserver-extras/issues"
+  },
+  "homepage": "https://github.com/migenius/realityserver-extras#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.4.3",
+    "@migenius/jsdoc-template": "^1.0.0",
+    "eslint": "^5.15.1",
+    "fs-extra": "^7.0.1",
+    "jest": "^24.7.1",
+    "jsdoc": "^3.5.5",
+    "rollup": "^1.9.0",
+    "rollup-plugin-cleanup": "^3.1.1",
+    "rollup-plugin-commonjs": "^9.2.1",
+    "rollup-plugin-filesize": "^6.0.1",
+    "rollup-plugin-node-resolve": "^4.0.1",
+    "rollup-plugin-terser": "^4.0.4"
+  },
+  "engines": {
+    "node": ">=6.5"
+  },
+  "files": [
+    "lib"
+  ],
+  "dependencies": {}
+}
