@@ -35,7 +35,7 @@
   "homepage": "https://github.com/migenius/realityserver-extras#readme",
   "devDependencies": {
     "@babel/preset-env": "^7.4.3",
-    "@migenius/jsdoc-template": "^1.0.0",
+    "@migenius/jsdoc-template": "^1.0.1",
     "eslint": "^5.15.1",
     "fs-extra": "^7.0.1",
     "jest": "^24.7.1",
