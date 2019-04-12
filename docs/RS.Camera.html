@@ -1,0 +1,5099 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Class: Camera</title>
+    
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:400,700" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/main.css">
+    
+    
+    <script>
+    var config = {"monospaceLinks":false,"cleverLinks":false,"applicationName":"RealityServer&reg; Extras","default":{}};
+    </script>
+    
+
+    
+</head>
+<body>
+<div id="wrap" class="clearfix">
+    
+<div class="navigation">
+    <h3 class="applicationName"><a href="index.html">RealityServer&reg; Extras</a><a target="_blank" href="https://www.migenius.com"><img src="images/toplogo.png"/></a></h3>
+    <button id="menuToggle" class="btn btn-link btn-lg menu-toggle">
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+    </button>
+    <div class="search">
+        <input id="search" type="text" class="form-control input-md" placeholder="Search...">
+    </div>
+    <ul class="list">
+    
+    
+        <li class="item" data-name="RS">
+            <span class="title namespace ">
+                
+                <span class="namespaceTag">
+                    <span class="glyphicon glyphicon-folder-open"></span>
+                </span>
+                
+                <a href="RS.html">RS</a>
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="RS.Camera">
+            <span class="title  ">
+                
+                <a href="RS.Camera.html">RS.Camera</a>
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li class="parent " data-name="RS.Camera.Y_UP"><a href="RS.Camera.html#.Y_UP">Y_UP</a></li>
+            
+                <li class="parent " data-name="RS.Camera.Z_UP"><a href="RS.Camera.html#.Z_UP">Z_UP</a></li>
+            
+                <li class="parent " data-name="RS.Camera#aperture"><a href="RS.Camera.html#aperture">aperture</a></li>
+            
+                <li class="parent " data-name="RS.Camera#clip_max"><a href="RS.Camera.html#clip_max">clip_max</a></li>
+            
+                <li class="parent " data-name="RS.Camera#clip_min"><a href="RS.Camera.html#clip_min">clip_min</a></li>
+            
+                <li class="parent " data-name="RS.Camera#direction"><a href="RS.Camera.html#direction">direction</a></li>
+            
+                <li class="parent " data-name="RS.Camera#field_of_view"><a href="RS.Camera.html#field_of_view">field_of_view</a></li>
+            
+                <li class="parent " data-name="RS.Camera#focal"><a href="RS.Camera.html#focal">focal</a></li>
+            
+                <li class="parent " data-name="RS.Camera#follow_target_point"><a href="RS.Camera.html#follow_target_point">follow_target_point</a></li>
+            
+                <li class="parent " data-name="RS.Camera#location"><a href="RS.Camera.html#location">location</a></li>
+            
+                <li class="parent " data-name="RS.Camera#matrix"><a href="RS.Camera.html#matrix">matrix</a></li>
+            
+                <li class="parent " data-name="RS.Camera#orthographic"><a href="RS.Camera.html#orthographic">orthographic</a></li>
+            
+                <li class="parent " data-name="RS.Camera#right"><a href="RS.Camera.html#right">right</a></li>
+            
+                <li class="parent " data-name="RS.Camera#scene_up_direction"><a href="RS.Camera.html#scene_up_direction">scene_up_direction</a></li>
+            
+                <li class="parent " data-name="RS.Camera#target_point"><a href="RS.Camera.html#target_point">target_point</a></li>
+            
+                <li class="parent " data-name="RS.Camera#transform"><a href="RS.Camera.html#transform">transform</a></li>
+            
+                <li class="parent " data-name="RS.Camera#up"><a href="RS.Camera.html#up">up</a></li>
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li class="parent  " data-name="RS.Camera#clone"><a href="RS.Camera.html#clone">clone</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#dolly"><a href="RS.Camera.html#dolly">dolly</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#elevate"><a href="RS.Camera.html#elevate">elevate</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#equal"><a href="RS.Camera.html#equal">equal</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#level_camera"><a href="RS.Camera.html#level_camera">level_camera</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#orbit"><a href="RS.Camera.html#orbit">orbit</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#orbit_around_point"><a href="RS.Camera.html#orbit_around_point">orbit_around_point</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#pan"><a href="RS.Camera.html#pan">pan</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#rotate"><a href="RS.Camera.html#rotate">rotate</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#rotate_around_axis"><a href="RS.Camera.html#rotate_around_axis">rotate_around_axis</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#set_from_camera"><a href="RS.Camera.html#set_from_camera">set_from_camera</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#set_from_object"><a href="RS.Camera.html#set_from_object">set_from_object</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#set_location"><a href="RS.Camera.html#set_location">set_location</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#set_target_point"><a href="RS.Camera.html#set_target_point">set_target_point</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#spin"><a href="RS.Camera.html#spin">spin</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#tilt"><a href="RS.Camera.html#tilt">tilt</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#transform_direction"><a href="RS.Camera.html#transform_direction">transform_direction</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#transform_direction_to_world"><a href="RS.Camera.html#transform_direction_to_world">transform_direction_to_world</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#transform_point"><a href="RS.Camera.html#transform_point">transform_point</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#translate"><a href="RS.Camera.html#translate">translate</a></li>
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            <span class="subtitle">Events</span>
+            
+                <li class="parent" data-name="RS.Camera#event:aperture-changed"><a href="RS.Camera.html#event:aperture-changed">aperture-changed</a></li>
+            
+                <li class="parent" data-name="RS.Camera#event:clip_max-changed"><a href="RS.Camera.html#event:clip_max-changed">clip_max-changed</a></li>
+            
+                <li class="parent" data-name="RS.Camera#event:clip_min-changed"><a href="RS.Camera.html#event:clip_min-changed">clip_min-changed</a></li>
+            
+                <li class="parent" data-name="RS.Camera#event:focal-changed"><a href="RS.Camera.html#event:focal-changed">focal-changed</a></li>
+            
+                <li class="parent" data-name="RS.Camera#event:orthographic-changed"><a href="RS.Camera.html#event:orthographic-changed">orthographic-changed</a></li>
+            
+                <li class="parent" data-name="RS.Camera#event:target_point-changed"><a href="RS.Camera.html#event:target_point-changed">target_point-changed</a></li>
+            
+                <li class="parent" data-name="RS.Camera#event:transform-changed"><a href="RS.Camera.html#event:transform-changed">transform-changed</a></li>
+            
+                <li class="parent" data-name="RS.Camera#event:up_direction-changed"><a href="RS.Camera.html#event:up_direction-changed">up_direction-changed</a></li>
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="RS.Transform">
+            <span class="title  ">
+                
+                <a href="RS.Transform.html">RS.Transform</a>
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li class="parent " data-name="RS.Transform.NEG_X_AXIS"><a href="RS.Transform.html#.NEG_X_AXIS">NEG_X_AXIS</a></li>
+            
+                <li class="parent " data-name="RS.Transform.NEG_Y_AXIS"><a href="RS.Transform.html#.NEG_Y_AXIS">NEG_Y_AXIS</a></li>
+            
+                <li class="parent " data-name="RS.Transform.NEG_Z_AXIS"><a href="RS.Transform.html#.NEG_Z_AXIS">NEG_Z_AXIS</a></li>
+            
+                <li class="parent " data-name="RS.Transform.X_AXIS"><a href="RS.Transform.html#.X_AXIS">X_AXIS</a></li>
+            
+                <li class="parent " data-name="RS.Transform.Y_AXIS"><a href="RS.Transform.html#.Y_AXIS">Y_AXIS</a></li>
+            
+                <li class="parent " data-name="RS.Transform.Z_AXIS"><a href="RS.Transform.html#.Z_AXIS">Z_AXIS</a></li>
+            
+                <li class="parent " data-name="RS.Transform#scale"><a href="RS.Transform.html#scale">scale</a></li>
+            
+                <li class="parent " data-name="RS.Transform#translation"><a href="RS.Transform.html#translation">translation</a></li>
+            
+                <li class="parent " data-name="RS.Transform#world_to_obj"><a href="RS.Transform.html#world_to_obj">world_to_obj</a></li>
+            
+                <li class="parent " data-name="RS.Transform#x_axis"><a href="RS.Transform.html#x_axis">x_axis</a></li>
+            
+                <li class="parent " data-name="RS.Transform#y_axis"><a href="RS.Transform.html#y_axis">y_axis</a></li>
+            
+                <li class="parent " data-name="RS.Transform#z_axis"><a href="RS.Transform.html#z_axis">z_axis</a></li>
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li class="parent  " data-name="RS.Transform#clone"><a href="RS.Transform.html#clone">clone</a></li>
+            
+                <li class="parent  " data-name="RS.Transform#multiply_scale"><a href="RS.Transform.html#multiply_scale">multiply_scale</a></li>
+            
+                <li class="parent  " data-name="RS.Transform#rotate"><a href="RS.Transform.html#rotate">rotate</a></li>
+            
+                <li class="parent  " data-name="RS.Transform#rotate_around_axis"><a href="RS.Transform.html#rotate_around_axis">rotate_around_axis</a></li>
+            
+                <li class="parent  " data-name="RS.Transform#rotate_around_point"><a href="RS.Transform.html#rotate_around_point">rotate_around_point</a></li>
+            
+                <li class="parent  " data-name="RS.Transform#set_rotation"><a href="RS.Transform.html#set_rotation">set_rotation</a></li>
+            
+                <li class="parent  " data-name="RS.Transform#set_rotation_around_axis"><a href="RS.Transform.html#set_rotation_around_axis">set_rotation_around_axis</a></li>
+            
+                <li class="parent  " data-name="RS.Transform#translate"><a href="RS.Transform.html#translate">translate</a></li>
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="RS.Transform_target">
+            <span class="title  ">
+                
+                <a href="RS.Transform_target.html">RS.Transform_target</a>
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li class="parent " data-name="RS.Transform_target#follow_target_point"><a href="RS.Transform_target.html#follow_target_point">follow_target_point</a></li>
+            
+                <li class="parent " data-name="RS.Transform_target#target_point"><a href="RS.Transform_target.html#target_point">target_point</a></li>
+            
+                <li class="parent " data-name="RS.Transform_target#up_direction"><a href="RS.Transform_target.html#up_direction">up_direction</a></li>
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li class="parent  " data-name="RS.Transform_target#clone"><a href="RS.Transform_target.html#clone">clone</a></li>
+            
+                <li class="parent  " data-name="RS.Transform_target#orbit_around_target_point"><a href="RS.Transform_target.html#orbit_around_target_point">orbit_around_target_point</a></li>
+            
+                <li class="parent  " data-name="RS.Transform_target#rotate"><a href="RS.Transform_target.html#rotate">rotate</a></li>
+            
+                <li class="parent  " data-name="RS.Transform_target#rotate_around_axis"><a href="RS.Transform_target.html#rotate_around_axis">rotate_around_axis</a></li>
+            
+                <li class="parent  " data-name="RS.Transform_target#rotate_around_point"><a href="RS.Transform_target.html#rotate_around_point">rotate_around_point</a></li>
+            
+                <li class="parent  " data-name="RS.Transform_target#set_rotation"><a href="RS.Transform_target.html#set_rotation">set_rotation</a></li>
+            
+                <li class="parent  " data-name="RS.Transform_target#set_rotation_around_axis"><a href="RS.Transform_target.html#set_rotation_around_axis">set_rotation_around_axis</a></li>
+            
+                <li class="parent  " data-name="RS.Transform_target#set_target_point"><a href="RS.Transform_target.html#set_target_point">set_target_point</a></li>
+            
+                <li class="parent  " data-name="RS.Transform_target#set_translation"><a href="RS.Transform_target.html#set_translation">set_translation</a></li>
+            
+                <li class="parent  " data-name="RS.Transform_target#translate"><a href="RS.Transform_target.html#translate">translate</a></li>
+            
+                <li class="parent  " data-name="RS.Transform_target#translate_target_point"><a href="RS.Transform_target.html#translate_target_point">translate_target_point</a></li>
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+    </ul>
+</div>
+
+    <div class="main">
+        <h1 class="page-title" data-filename="RS.Camera.html">Class: Camera</h1>
+        
+
+
+
+<section>
+    
+<header>
+    <div class="header content-size">
+        <h2><span class="ancestors"><a href="RS.html">RS</a>.</span>Camera
+        </h2>
+        
+            <div class="class-description"><p>The Camera class allows simple camera manipulation. Events are emitted whenever
+underlying properties are changed to allow the user to update RealityServer&reg; or
+other system componenets as necessary.</p></div>
+        
+    </div>
+</header>  
+
+<article class="content-size">
+    
+        <div class="container-overview">
+        
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="Camera">
+            <a class="share-icon" href="#Camera"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                new RS.Camera
+            </span>
+            <span class="signature">()</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Creates a perspective Y up camera with a 90 degree field of view.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+        </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Members</h3>
+        
+        <dl class="list-members">
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".Y_UP">
+            <a class="share-icon" href="#.Y_UP"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">RS.Camera.Y_UP</span>
+            
+            
+            <span class="access-signature">static</span>
+            
+            
+        </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Enum representing a Y up camera</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".Z_UP">
+            <a class="share-icon" href="#.Z_UP"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">RS.Camera.Z_UP</span>
+            
+            
+            <span class="access-signature">static</span>
+            
+            
+        </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Enum representing a Y up camera</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="aperture">
+            <a class="share-icon" href="#aperture"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">aperture</span>
+            <span class="type-signature type">Number</span>
+            
+            
+            
+            
+        </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The aperture of the camera. When changed fires a
+<a href="RS.Camera.html#event:aperture-changed">RS.Camera#event:aperture-changed</a> event.</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="clip_max">
+            <a class="share-icon" href="#clip_max"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">clip_max</span>
+            
+            
+            
+            
+            
+        </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The clip max of the view frustum. When changed fires a
+<a href="RS.Camera.html#event:clip_max-changed">RS.Camera#event:clip_max-changed</a> event</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="clip_min">
+            <a class="share-icon" href="#clip_min"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">clip_min</span>
+            
+            
+            
+            
+            
+        </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The clip min of the view frustum. When changed fires a
+<a href="RS.Camera.html#event:clip_min-changed">RS.Camera#event:clip_min-changed</a> event</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="direction">
+            <a class="share-icon" href="#direction"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">direction</span>
+            <span class="type-signature type">RS.Vector3</span>
+            
+            <span class="access-signature">readonly</span>
+            
+            
+        </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The look direction vector of the camera.</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="field_of_view">
+            <a class="share-icon" href="#field_of_view"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">field_of_view</span>
+            <span class="type-signature type">Number</span>
+            
+            
+            
+            
+        </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The half field of view of the camera in radians. When changed fires a
+<a href="RS.Camera.html#event:aperture-changed">RS.Camera#event:aperture-changed</a> event</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="focal">
+            <a class="share-icon" href="#focal"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">focal</span>
+            <span class="type-signature type">Number</span>
+            
+            
+            
+            
+        </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The focal length of the camera. When changed fires a
+<a href="RS.Camera.html#event:focal-changed">RS.Camera#event:focal-changed</a> event.</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="follow_target_point">
+            <a class="share-icon" href="#follow_target_point"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">follow_target_point</span>
+            <span class="type-signature type">Boolean</span>
+            
+            
+            
+            
+        </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Whether to follow the target point or not. When <code>true</code> the camera will always look at the
+target point, when <code>false</code> it can be rotated away. When set to <code>true</code> will fire a
+<a href="RS.Camera.html#event:transform-changed">RS.Camera#event:transform-changed</a> event.</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>true</li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="location">
+            <a class="share-icon" href="#location"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">location</span>
+            <span class="type-signature type">RS.Vector3</span>
+            
+            <span class="access-signature">readonly</span>
+            
+            
+        </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The position of the camera in world space.</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="matrix">
+            <a class="share-icon" href="#matrix"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">matrix</span>
+            <span class="type-signature type">RS.Matrix4x4</span>
+            
+            
+            
+            
+        </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The matrix of the transform. When set fires a <a href="RS.Camera.html#event:transform-changed">RS.Camera#event:transform-changed</a> event</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="orthographic">
+            <a class="share-icon" href="#orthographic"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">orthographic</span>
+            <span class="type-signature type">Boolean</span>
+            
+            
+            
+            
+        </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Whether the camera is orthographic or perspective. When changed fires a
+<a href="RS.Camera.html#event:orthographic-changed">RS.Camera#event:orthographic-changed</a> event</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="right">
+            <a class="share-icon" href="#right"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">right</span>
+            <span class="type-signature type">RS.Vector3</span>
+            
+            <span class="access-signature">readonly</span>
+            
+            
+        </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The right direction vector of the camera.</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="scene_up_direction">
+            <a class="share-icon" href="#scene_up_direction"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">scene_up_direction</span>
+            <span class="type-signature type">Number</span>
+            
+            
+            
+            
+        </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The nominal up direction of the camera. Can be either <a href="RS.Camera.html#.Y_UP">RS.Camera.Y_UP</a> or
+<a href="RS.Camera.html#.Z_UP">RS.Camera.Z_UP</a>. When set the camera will rotate to match the new up direction and
+fires a <a href="RS.Camera.html#event:up_direction-changed">RS.Camera#event:up_direction-changed</a> and
+<a href="RS.Camera.html#event:transform-changed">RS.Camera#event:transform-changed</a> event.</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="target_point">
+            <a class="share-icon" href="#target_point"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">target_point</span>
+            <span class="type-signature type">RS.Vector3</span>
+            
+            
+            
+            
+        </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The target point of the camera. When set fires a <a href="RS.Camera.html#event:target_point-changed">RS.Camera#event:target_point-changed</a>
+event. If the camera is following the target point then it is rotated to look at the target point
+and fires a <a href="RS.Camera.html#event:transform-changed">RS.Camera#event:transform-changed</a> event.</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="transform">
+            <a class="share-icon" href="#transform"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">transform</span>
+            <span class="type-signature type"><a href="RS.Transform_target.html">RS.Transform_target</a></span>
+            
+            
+            
+            
+        </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The transform of the camera. When changed fires a
+<a href="RS.Camera.html#event:transform-changed">RS.Camera#event:transform-changed</a> event and a
+<a href="RS.Camera.html#event:target_point-changed">RS.Camera#event:target_point-changed</a> event.</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="up">
+            <a class="share-icon" href="#up"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">up</span>
+            <span class="type-signature type">RS.Vector3</span>
+            
+            <span class="access-signature">readonly</span>
+            
+            
+        </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The actual up direction vector of the camera.</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl class="list-methods">
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="clone">
+            <a class="share-icon" href="#clone"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                clone
+            </span>
+            <span class="signature">()</span><span class="type-signature"><a href="RS.Camera.html">RS.Camera</a></span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Returns a copy of this Camera.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        <a href="RS.Camera.html">RS.Camera</a>
+                        
+                    
+            </td>
+            <td class="description last"></td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="dolly">
+            <a class="share-icon" href="#dolly"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                dolly
+            </span>
+            <span class="signature">(depth, <span class="optional">shift_target_point</span>)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Dollies the camera.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>depth</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>The amount to move along the direction vector.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>shift_target_point</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>If <code>true</code> then dollies the target as well.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="RS.Camera.html#event:target_point-changed">RS.Camera#event:target_point-changed</a></li>
+    
+        <li><a href="RS.Camera.html#event:transform-changed">RS.Camera#event:transform-changed</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="elevate">
+            <a class="share-icon" href="#elevate"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                elevate
+            </span>
+            <span class="signature">(vertical)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Elevates the camera and the target point</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>vertical</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The amount to move the camera  up the up vector.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="RS.Camera.html#event:target_point-changed">RS.Camera#event:target_point-changed</a></li>
+    
+        <li><a href="RS.Camera.html#event:transform-changed">RS.Camera#event:transform-changed</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="equal">
+            <a class="share-icon" href="#equal"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                equal
+            </span>
+            <span class="signature">(rhs)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Compares this camera to another. The camera are equal if the aperture, focal length,
+field of view and matrix are the same.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>rhs</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="RS.Camera.html">RS.Camera</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>the camera to compare</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="level_camera">
+            <a class="share-icon" href="#level_camera"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                level_camera
+            </span>
+            <span class="signature">()</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Forces the camera to be horizontal.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="RS.Camera.html#event:target_point-changed">RS.Camera#event:target_point-changed</a></li>
+    
+        <li><a href="RS.Camera.html#event:transform-changed">RS.Camera#event:transform-changed</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="orbit">
+            <a class="share-icon" href="#orbit"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                orbit
+            </span>
+            <span class="signature">(vertical_axis, horizontal_axis, <span class="optional">orbit_point</span>)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Orbits the camera. This method orbits using the initial up and right reference vectors.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>vertical_axis</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>The amount to orbit around the up vector in radians.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>horizontal_axis</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>The amount to orbit aroung the right vector in radians.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>orbit_point</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">RS.Vector3</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>The point to orbit around, if provided then this becomes
+the new target point.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="RS.Camera.html#event:target_point-changed">RS.Camera#event:target_point-changed</a></li>
+    
+        <li><a href="RS.Camera.html#event:transform-changed">RS.Camera#event:transform-changed</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="orbit_around_point">
+            <a class="share-icon" href="#orbit_around_point"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                orbit_around_point
+            </span>
+            <span class="signature">(vertical_axis, horizontal_axis, <span class="optional">shift_target_point</span>)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Orbits the camera around a point in world space. This method acts much like the standard orbit function
+however if you choose to orbit around a different point than the target point you can also rotate the
+target point as well.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>{RS.Vector3></code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>point The point to orbit around, this will NOT change the target point.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>vertical_axis</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>The amount to rotate around the up vector in radians.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>horizontal_axis</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>The amount to rorate aroung the right vector in radians.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>shift_target_point</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>If true the target point will also rotate around the point.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="RS.Camera.html#event:target_point-changed">RS.Camera#event:target_point-changed</a></li>
+    
+        <li><a href="RS.Camera.html#event:transform-changed">RS.Camera#event:transform-changed</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="pan">
+            <a class="share-icon" href="#pan"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                pan
+            </span>
+            <span class="signature">(horizontal, vertical, <span class="optional">shift_target_point</span>)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Pans the camera.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>horizontal</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>The amount to pan in the right direction.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>vertical</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>The amount to pan in the up direction.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>shift_target_point</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>If <code>true</code> then pans the target as well.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="RS.Camera.html#event:target_point-changed">RS.Camera#event:target_point-changed</a></li>
+    
+        <li><a href="RS.Camera.html#event:transform-changed">RS.Camera#event:transform-changed</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="rotate">
+            <a class="share-icon" href="#rotate"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                rotate
+            </span>
+            <span class="signature">(vertical_axis, horizontal_axis, direction_axis, <span class="optional">shift_target_point</span>)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Rotates the camera around itself.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>vertical_axis</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>Amount to rotate around the up vector in radians.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>horizontal_axis</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>Amount to rotate around the right vector in radians.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>direction_axis</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>Amount to rotate around the direction vector in radians (roll).</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>shift_target_point</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>If <code>true`</code> the target point will also rotate around the point.
+If <code>false`</code> then only the <code>direction_axis</code> rotation will be applied.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="RS.Camera.html#event:target_point-changed">RS.Camera#event:target_point-changed</a></li>
+    
+        <li><a href="RS.Camera.html#event:transform-changed">RS.Camera#event:transform-changed</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="rotate_around_axis">
+            <a class="share-icon" href="#rotate_around_axis"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                rotate_around_axis
+            </span>
+            <span class="signature">(axis, angle, <span class="optional">in_camera_space</span>, <span class="optional">rotate_target_point</span>)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Rotates the camera around a given axis.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>axis</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">RS.Vector3</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>the axis to rotate around.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>angle</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>the amount to rotate by in radians.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>in_camera_space</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>if <code>true</code> then the axis is in camera space, otherwise world.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>rotate_target_point</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>if <code>true</code> then the target point is rotated by the same amount. Otherwise
+we keep looking at the current target point only.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="RS.Camera.html#event:target_point-changed">RS.Camera#event:target_point-changed</a></li>
+    
+        <li><a href="RS.Camera.html#event:transform-changed">RS.Camera#event:transform-changed</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="set_from_camera">
+            <a class="share-icon" href="#set_from_camera"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                set_from_camera
+            </span>
+            <span class="signature">(camera)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Sets this camera from another.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>camera</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="RS.Camera.html">RS.Camera</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>the camera to set from or an object with the same properties.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="RS.Camera.html#event:orthographic-changed">RS.Camera#event:orthographic-changed</a></li>
+    
+        <li><a href="RS.Camera.html#event:focal-changed">RS.Camera#event:focal-changed</a></li>
+    
+        <li><a href="RS.Camera.html#event:aperture-changed">RS.Camera#event:aperture-changed</a></li>
+    
+        <li><a href="RS.Camera.html#event:clip_min-changed">RS.Camera#event:clip_min-changed</a></li>
+    
+        <li><a href="RS.Camera.html#event:clip_max-changed">RS.Camera#event:clip_max-changed</a></li>
+    
+        <li><a href="RS.Camera.html#event:up_direction-changed">RS.Camera#event:up_direction-changed</a></li>
+    
+        <li><a href="RS.Camera.html#event:target_point-changed">RS.Camera#event:target_point-changed</a></li>
+    
+        <li><a href="RS.Camera.html#event:transform-changed">RS.Camera#event:transform-changed</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="set_from_object">
+            <a class="share-icon" href="#set_from_object"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                set_from_object
+            </span>
+            <span class="signature">(camera)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Sets the camera data from either an object with appropriate properties
+or from another Camera instance.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>camera</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="RS.Camera.html">RS.Camera</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>the camera to set from or an object with the same properties</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="RS.Camera.html#event:orthographic-changed">RS.Camera#event:orthographic-changed</a></li>
+    
+        <li><a href="RS.Camera.html#event:focal-changed">RS.Camera#event:focal-changed</a></li>
+    
+        <li><a href="RS.Camera.html#event:aperture-changed">RS.Camera#event:aperture-changed</a></li>
+    
+        <li><a href="RS.Camera.html#event:clip_min-changed">RS.Camera#event:clip_min-changed</a></li>
+    
+        <li><a href="RS.Camera.html#event:clip_max-changed">RS.Camera#event:clip_max-changed</a></li>
+    
+        <li><a href="RS.Camera.html#event:up_direction-changed">RS.Camera#event:up_direction-changed</a></li>
+    
+        <li><a href="RS.Camera.html#event:target_point-changed">RS.Camera#event:target_point-changed</a></li>
+    
+        <li><a href="RS.Camera.html#event:transform-changed">RS.Camera#event:transform-changed</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="set_location">
+            <a class="share-icon" href="#set_location"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                set_location
+            </span>
+            <span class="signature">(location, <span class="optional">shift_target_point</span>)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Moves the camera to a given location.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>location</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">RS.Vector3</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>The position to move to.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>shift_target_point</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>If <code>true</code> then the target point is moved to be
+at the same relative location as previously. Otherwise the transform will look at the
+old target point after translation.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="RS.Camera.html#event:target_point-changed">RS.Camera#event:target_point-changed</a></li>
+    
+        <li><a href="RS.Camera.html#event:transform-changed">RS.Camera#event:transform-changed</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="set_target_point">
+            <a class="share-icon" href="#set_target_point"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                set_target_point
+            </span>
+            <span class="signature">(target_point, <span class="optional">reset_up_vector</span>)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Sets the target point of the camera and, if following the target point,
+makes the camera look at it.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>target_point</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">RS.Vector3</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>The new target point.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>reset_up_vector</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>if <code>true</code>, and following the target point,
+then the camera roll will be reset.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="RS.Camera.html#event:target_point-changed">RS.Camera#event:target_point-changed</a></li>
+    
+        <li><a href="RS.Camera.html#event:transform-changed">RS.Camera#event:transform-changed</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="spin">
+            <a class="share-icon" href="#spin"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                spin
+            </span>
+            <span class="signature">(vertical_axis)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Spins the camera by rotating around the up vector of the camera. This also rotate the
+target point.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>vertical_axis</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The amount, in radians, to spin.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="RS.Camera.html#event:transform-changed">RS.Camera#event:transform-changed</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="tilt">
+            <a class="share-icon" href="#tilt"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                tilt
+            </span>
+            <span class="signature">(horizontal_axis)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Tilts the camera by rotating around the right vector of the camera. This also rotate the
+target point.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>horizontal_axis</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The amount, in radians, to tilt.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="RS.Camera.html#event:target_point-changed">RS.Camera#event:target_point-changed</a></li>
+    
+        <li><a href="RS.Camera.html#event:transform-changed">RS.Camera#event:transform-changed</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="transform_direction">
+            <a class="share-icon" href="#transform_direction"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                transform_direction
+            </span>
+            <span class="signature">(point, result)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Transforms a direction into camera space.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>point</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">RS.Vector4</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The point to tranform.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>result</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">RS.Vector4</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>Receives the result of the transform.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="transform_direction_to_world">
+            <a class="share-icon" href="#transform_direction_to_world"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                transform_direction_to_world
+            </span>
+            <span class="signature">(point, result)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Transforms a direction from camera space into world space.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>point</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">RS.Vector4</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The point to tranform.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>result</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">RS.Vector4</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>Receives the result of the transform.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="transform_point">
+            <a class="share-icon" href="#transform_point"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                transform_point
+            </span>
+            <span class="signature">(point, result)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Transforms a point into camera space.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>point</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">RS.Vector4</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The point to tranform.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>result</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">RS.Vector4</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>Receives the result of the transform.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="translate">
+            <a class="share-icon" href="#translate"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                translate
+            </span>
+            <span class="signature">(move, <span class="optional">shift_target_point</span>)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Moves the camera by the given amount</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>move</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">RS.Vector3</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>The vector to move along.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>shift_target_point</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>If <code>true</code> then the target point is moved as well,
+otherwise the camera will look at the old target point after translation.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="RS.Camera.html#event:target_point-changed">RS.Camera#event:target_point-changed</a></li>
+    
+        <li><a href="RS.Camera.html#event:transform-changed">RS.Camera#event:transform-changed</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+    
+    
+
+    
+        <h3 class="subsection-title">Events</h3>
+        
+        <dl class="list-events">
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="event:aperture-changed">
+            <a class="share-icon" href="#event:aperture-changed"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                aperture-changed
+            </span>
+            
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Aperture changed event.</p>
+<p>Fired when the camera changes aperture</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="event:clip_max-changed">
+            <a class="share-icon" href="#event:clip_max-changed"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                clip_max-changed
+            </span>
+            
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Clip max changed event.</p>
+<p>Fired when the camera clip max changes</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="event:clip_min-changed">
+            <a class="share-icon" href="#event:clip_min-changed"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                clip_min-changed
+            </span>
+            
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Clip max changed event.</p>
+<p>Fired when the camera clip max changes</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="event:focal-changed">
+            <a class="share-icon" href="#event:focal-changed"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                focal-changed
+            </span>
+            
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Focal changed event.</p>
+<p>Fired when the camera changes focal</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="event:orthographic-changed">
+            <a class="share-icon" href="#event:orthographic-changed"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                orthographic-changed
+            </span>
+            
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Orthographic changed event.</p>
+<p>Fired when the camera changes between orthographic and perspective</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="event:target_point-changed">
+            <a class="share-icon" href="#event:target_point-changed"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                target_point-changed
+            </span>
+            
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Target point changed event.</p>
+<p>Fired when the camera target point</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="event:transform-changed">
+            <a class="share-icon" href="#event:transform-changed"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                transform-changed
+            </span>
+            
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Transform changed event.</p>
+<p>Fired whenever the underlying transform changes</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="event:up_direction-changed">
+            <a class="share-icon" href="#event:up_direction-changed"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                up_direction-changed
+            </span>
+            
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Up direction changed event.</p>
+<p>Fired when the camera up direction changes.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        </dl>
+    
+</article>
+
+</section>  
+
+
+
+
+
+        
+
+        <footer class="content-size">
+            <div class="footer">
+                Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Apr 13 2019 07:53:08 GMT+1000 (Australian Eastern Standard Time)
+            </div>
+        </footer>
+    </div>
+</div>
+<script>prettyPrint();</script>
+<script src="scripts/main.js"></script>
+</body>
+</html>
