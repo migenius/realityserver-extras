@@ -15,7 +15,3 @@ Download the [minified](https://unpkg.com/@migenius/realityserver-extras@1.0.0 "
 ## API Documentation
 
 TODO: link to live docs go here
-
-## Demos
-
-- [React/mobx implementation of the render loop demo](https://github.com/migenius/render-loop-react-mobx "React/MobX demo")

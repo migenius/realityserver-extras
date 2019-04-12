@@ -21,7 +21,3 @@ For Node.js and bundlers simply install the modue:
 ```shell
 $ npm install @migenius/realityserver-extras
 ```
-
-## Sample applications
-
-- [React/mobx implementation of the render loop demo](http://github.com/migenius/render-loop-react-mobx "React/MobX demo")
