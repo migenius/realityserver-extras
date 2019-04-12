@@ -1,0 +1,2959 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Class: Transform_target</title>
+    
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:400,700" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/main.css">
+    
+    
+    <script>
+    var config = {"monospaceLinks":false,"cleverLinks":false,"applicationName":"RealityServer&reg; Extras","default":{}};
+    </script>
+    
+
+    
+</head>
+<body>
+<div id="wrap" class="clearfix">
+    
+<div class="navigation">
+    <h3 class="applicationName"><a href="index.html">RealityServer&reg; Extras</a><a target="_blank" href="https://www.migenius.com"><img src="images/toplogo.png"/></a></h3>
+    <button id="menuToggle" class="btn btn-link btn-lg menu-toggle">
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+    </button>
+    <div class="search">
+        <input id="search" type="text" class="form-control input-md" placeholder="Search...">
+    </div>
+    <ul class="list">
+    
+    
+        <li class="item" data-name="RS">
+            <span class="title namespace ">
+                
+                <span class="namespaceTag">
+                    <span class="glyphicon glyphicon-folder-open"></span>
+                </span>
+                
+                <a href="RS.html">RS</a>
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="RS.Camera">
+            <span class="title  ">
+                
+                <a href="RS.Camera.html">RS.Camera</a>
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li class="parent " data-name="RS.Camera.Y_UP"><a href="RS.Camera.html#.Y_UP">Y_UP</a></li>
+            
+                <li class="parent " data-name="RS.Camera.Z_UP"><a href="RS.Camera.html#.Z_UP">Z_UP</a></li>
+            
+                <li class="parent " data-name="RS.Camera#aperture"><a href="RS.Camera.html#aperture">aperture</a></li>
+            
+                <li class="parent " data-name="RS.Camera#clip_max"><a href="RS.Camera.html#clip_max">clip_max</a></li>
+            
+                <li class="parent " data-name="RS.Camera#clip_min"><a href="RS.Camera.html#clip_min">clip_min</a></li>
+            
+                <li class="parent " data-name="RS.Camera#direction"><a href="RS.Camera.html#direction">direction</a></li>
+            
+                <li class="parent " data-name="RS.Camera#field_of_view"><a href="RS.Camera.html#field_of_view">field_of_view</a></li>
+            
+                <li class="parent " data-name="RS.Camera#focal"><a href="RS.Camera.html#focal">focal</a></li>
+            
+                <li class="parent " data-name="RS.Camera#follow_target_point"><a href="RS.Camera.html#follow_target_point">follow_target_point</a></li>
+            
+                <li class="parent " data-name="RS.Camera#location"><a href="RS.Camera.html#location">location</a></li>
+            
+                <li class="parent " data-name="RS.Camera#matrix"><a href="RS.Camera.html#matrix">matrix</a></li>
+            
+                <li class="parent " data-name="RS.Camera#orthographic"><a href="RS.Camera.html#orthographic">orthographic</a></li>
+            
+                <li class="parent " data-name="RS.Camera#right"><a href="RS.Camera.html#right">right</a></li>
+            
+                <li class="parent " data-name="RS.Camera#scene_up_direction"><a href="RS.Camera.html#scene_up_direction">scene_up_direction</a></li>
+            
+                <li class="parent " data-name="RS.Camera#target_point"><a href="RS.Camera.html#target_point">target_point</a></li>
+            
+                <li class="parent " data-name="RS.Camera#transform"><a href="RS.Camera.html#transform">transform</a></li>
+            
+                <li class="parent " data-name="RS.Camera#up"><a href="RS.Camera.html#up">up</a></li>
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li class="parent  " data-name="RS.Camera#clone"><a href="RS.Camera.html#clone">clone</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#dolly"><a href="RS.Camera.html#dolly">dolly</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#elevate"><a href="RS.Camera.html#elevate">elevate</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#equal"><a href="RS.Camera.html#equal">equal</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#level_camera"><a href="RS.Camera.html#level_camera">level_camera</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#orbit"><a href="RS.Camera.html#orbit">orbit</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#orbit_around_point"><a href="RS.Camera.html#orbit_around_point">orbit_around_point</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#pan"><a href="RS.Camera.html#pan">pan</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#rotate"><a href="RS.Camera.html#rotate">rotate</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#rotate_around_axis"><a href="RS.Camera.html#rotate_around_axis">rotate_around_axis</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#set_from_camera"><a href="RS.Camera.html#set_from_camera">set_from_camera</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#set_from_object"><a href="RS.Camera.html#set_from_object">set_from_object</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#set_location"><a href="RS.Camera.html#set_location">set_location</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#set_target_point"><a href="RS.Camera.html#set_target_point">set_target_point</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#spin"><a href="RS.Camera.html#spin">spin</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#tilt"><a href="RS.Camera.html#tilt">tilt</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#transform_direction"><a href="RS.Camera.html#transform_direction">transform_direction</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#transform_direction_to_world"><a href="RS.Camera.html#transform_direction_to_world">transform_direction_to_world</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#transform_point"><a href="RS.Camera.html#transform_point">transform_point</a></li>
+            
+                <li class="parent  " data-name="RS.Camera#translate"><a href="RS.Camera.html#translate">translate</a></li>
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            <span class="subtitle">Events</span>
+            
+                <li class="parent" data-name="RS.Camera#event:aperture-changed"><a href="RS.Camera.html#event:aperture-changed">aperture-changed</a></li>
+            
+                <li class="parent" data-name="RS.Camera#event:clip_max-changed"><a href="RS.Camera.html#event:clip_max-changed">clip_max-changed</a></li>
+            
+                <li class="parent" data-name="RS.Camera#event:clip_min-changed"><a href="RS.Camera.html#event:clip_min-changed">clip_min-changed</a></li>
+            
+                <li class="parent" data-name="RS.Camera#event:focal-changed"><a href="RS.Camera.html#event:focal-changed">focal-changed</a></li>
+            
+                <li class="parent" data-name="RS.Camera#event:orthographic-changed"><a href="RS.Camera.html#event:orthographic-changed">orthographic-changed</a></li>
+            
+                <li class="parent" data-name="RS.Camera#event:target_point-changed"><a href="RS.Camera.html#event:target_point-changed">target_point-changed</a></li>
+            
+                <li class="parent" data-name="RS.Camera#event:transform-changed"><a href="RS.Camera.html#event:transform-changed">transform-changed</a></li>
+            
+                <li class="parent" data-name="RS.Camera#event:up_direction-changed"><a href="RS.Camera.html#event:up_direction-changed">up_direction-changed</a></li>
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="RS.Transform">
+            <span class="title  ">
+                
+                <a href="RS.Transform.html">RS.Transform</a>
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li class="parent " data-name="RS.Transform.NEG_X_AXIS"><a href="RS.Transform.html#.NEG_X_AXIS">NEG_X_AXIS</a></li>
+            
+                <li class="parent " data-name="RS.Transform.NEG_Y_AXIS"><a href="RS.Transform.html#.NEG_Y_AXIS">NEG_Y_AXIS</a></li>
+            
+                <li class="parent " data-name="RS.Transform.NEG_Z_AXIS"><a href="RS.Transform.html#.NEG_Z_AXIS">NEG_Z_AXIS</a></li>
+            
+                <li class="parent " data-name="RS.Transform.X_AXIS"><a href="RS.Transform.html#.X_AXIS">X_AXIS</a></li>
+            
+                <li class="parent " data-name="RS.Transform.Y_AXIS"><a href="RS.Transform.html#.Y_AXIS">Y_AXIS</a></li>
+            
+                <li class="parent " data-name="RS.Transform.Z_AXIS"><a href="RS.Transform.html#.Z_AXIS">Z_AXIS</a></li>
+            
+                <li class="parent " data-name="RS.Transform#scale"><a href="RS.Transform.html#scale">scale</a></li>
+            
+                <li class="parent " data-name="RS.Transform#translation"><a href="RS.Transform.html#translation">translation</a></li>
+            
+                <li class="parent " data-name="RS.Transform#world_to_obj"><a href="RS.Transform.html#world_to_obj">world_to_obj</a></li>
+            
+                <li class="parent " data-name="RS.Transform#x_axis"><a href="RS.Transform.html#x_axis">x_axis</a></li>
+            
+                <li class="parent " data-name="RS.Transform#y_axis"><a href="RS.Transform.html#y_axis">y_axis</a></li>
+            
+                <li class="parent " data-name="RS.Transform#z_axis"><a href="RS.Transform.html#z_axis">z_axis</a></li>
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li class="parent  " data-name="RS.Transform#clone"><a href="RS.Transform.html#clone">clone</a></li>
+            
+                <li class="parent  " data-name="RS.Transform#multiply_scale"><a href="RS.Transform.html#multiply_scale">multiply_scale</a></li>
+            
+                <li class="parent  " data-name="RS.Transform#rotate"><a href="RS.Transform.html#rotate">rotate</a></li>
+            
+                <li class="parent  " data-name="RS.Transform#rotate_around_axis"><a href="RS.Transform.html#rotate_around_axis">rotate_around_axis</a></li>
+            
+                <li class="parent  " data-name="RS.Transform#rotate_around_point"><a href="RS.Transform.html#rotate_around_point">rotate_around_point</a></li>
+            
+                <li class="parent  " data-name="RS.Transform#set_rotation"><a href="RS.Transform.html#set_rotation">set_rotation</a></li>
+            
+                <li class="parent  " data-name="RS.Transform#set_rotation_around_axis"><a href="RS.Transform.html#set_rotation_around_axis">set_rotation_around_axis</a></li>
+            
+                <li class="parent  " data-name="RS.Transform#translate"><a href="RS.Transform.html#translate">translate</a></li>
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="RS.Transform_target">
+            <span class="title  ">
+                
+                <a href="RS.Transform_target.html">RS.Transform_target</a>
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li class="parent " data-name="RS.Transform_target#follow_target_point"><a href="RS.Transform_target.html#follow_target_point">follow_target_point</a></li>
+            
+                <li class="parent " data-name="RS.Transform_target#target_point"><a href="RS.Transform_target.html#target_point">target_point</a></li>
+            
+                <li class="parent " data-name="RS.Transform_target#up_direction"><a href="RS.Transform_target.html#up_direction">up_direction</a></li>
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li class="parent  " data-name="RS.Transform_target#clone"><a href="RS.Transform_target.html#clone">clone</a></li>
+            
+                <li class="parent  " data-name="RS.Transform_target#orbit_around_target_point"><a href="RS.Transform_target.html#orbit_around_target_point">orbit_around_target_point</a></li>
+            
+                <li class="parent  " data-name="RS.Transform_target#rotate"><a href="RS.Transform_target.html#rotate">rotate</a></li>
+            
+                <li class="parent  " data-name="RS.Transform_target#rotate_around_axis"><a href="RS.Transform_target.html#rotate_around_axis">rotate_around_axis</a></li>
+            
+                <li class="parent  " data-name="RS.Transform_target#rotate_around_point"><a href="RS.Transform_target.html#rotate_around_point">rotate_around_point</a></li>
+            
+                <li class="parent  " data-name="RS.Transform_target#set_rotation"><a href="RS.Transform_target.html#set_rotation">set_rotation</a></li>
+            
+                <li class="parent  " data-name="RS.Transform_target#set_rotation_around_axis"><a href="RS.Transform_target.html#set_rotation_around_axis">set_rotation_around_axis</a></li>
+            
+                <li class="parent  " data-name="RS.Transform_target#set_target_point"><a href="RS.Transform_target.html#set_target_point">set_target_point</a></li>
+            
+                <li class="parent  " data-name="RS.Transform_target#set_translation"><a href="RS.Transform_target.html#set_translation">set_translation</a></li>
+            
+                <li class="parent  " data-name="RS.Transform_target#translate"><a href="RS.Transform_target.html#translate">translate</a></li>
+            
+                <li class="parent  " data-name="RS.Transform_target#translate_target_point"><a href="RS.Transform_target.html#translate_target_point">translate_target_point</a></li>
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+    </ul>
+</div>
+
+    <div class="main">
+        <h1 class="page-title" data-filename="RS.Transform_target.html">Class: Transform_target</h1>
+        
+
+
+
+<section>
+    
+<header>
+    <div class="header content-size">
+        <h2><span class="ancestors"><a href="RS.html">RS</a>.</span>Transform_target
+        </h2>
+        
+            <div class="class-description"><p>The Transform_target class adds look at funcitonality to the <a href="RS.Transform.html">RS.Transform</a>
+class.</p></div>
+        
+    </div>
+</header>  
+
+<article class="content-size">
+    
+        <div class="container-overview">
+        
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="Transform_target">
+            <a class="share-icon" href="#Transform_target"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                new RS.Transform_target
+            </span>
+            <span class="signature">()</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The default constructor initializes with an identity matrix looking at the point
+0, 0, -1.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+        </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Members</h3>
+        
+        <dl class="list-members">
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="follow_target_point">
+            <a class="share-icon" href="#follow_target_point"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">follow_target_point</span>
+            <span class="type-signature type">Boolean</span>
+            
+            
+            
+            
+        </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Whether the target point should be followed. If <code>true</code> then the transform
+will be locked to looking at the target point. If not then operations will still
+occur relative to the target point however the transform diretion will remain the same.</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>true</li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="target_point">
+            <a class="share-icon" href="#target_point"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">target_point</span>
+            <span class="type-signature type">RS.Vector3</span>
+            
+            
+            
+            
+        </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The target point</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="up_direction">
+            <a class="share-icon" href="#up_direction"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">up_direction</span>
+            <span class="type-signature type">RS.Vector3</span>
+            
+            
+            
+            
+        </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The nominal up direction. When performing look at operations the transform
+will attempt to keep it's Y axis aligned with this direction. When set the
+transform will re-orient itself to the new up.</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>{x: 0, y: 1, z: 0}</li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl class="list-methods">
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="clone">
+            <a class="share-icon" href="#clone"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                clone
+            </span>
+            <span class="signature">()</span><span class="type-signature"><a href="RS.Transform_target.html">RS.Transform_target</a></span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>returns a copy of this Transform_target.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        <a href="RS.Transform_target.html">RS.Transform_target</a>
+                        
+                    
+            </td>
+            <td class="description last"></td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="orbit_around_target_point">
+            <a class="share-icon" href="#orbit_around_target_point"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                orbit_around_target_point
+            </span>
+            <span class="signature">(dx, dy, dz)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Orbits around the target point by the given amount.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>dx</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>the X rotation in radians.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>dy</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>the Y rotation in radians.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>dz</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>the Z rotation in radians.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="rotate">
+            <a class="share-icon" href="#rotate"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                rotate
+            </span>
+            <span class="signature">(dx, dy, dz, <span class="optional">rotate_target_point</span>)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Performs an Euler rotation on the transform in ZYX order. If rotate_target_point is set
+to <code>true</code> (or if follow_target_point is <code>false</code>) then the target point
+will be rotated around the translation vector.</p>
+<p>If <code>rotate_target_point</code> is <code>false</code>, and we are following the target point then this will only
+apply the <code>dz</code> rotation as we must keep looking at the target point.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>dx</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>X rotation in radians.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>dy</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>Y rotation in radians.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>dz</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>Z rotation in radians.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>rotate_target_point</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>if <code>true</code> then the target point is rotated by the same amount.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="rotate_around_axis">
+            <a class="share-icon" href="#rotate_around_axis"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                rotate_around_axis
+            </span>
+            <span class="signature">(axis, angle, <span class="optional">in_object_space</span>, <span class="optional">rotate_target_point</span>)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Rotates the transform about the given axis by the given angle in radians. If <code>in_object_space</code> is <code>true</code>,
+then the axis will be transform into object space first. If <code>rotate_target_point</code> is  true then the target
+point is also rotated.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>axis</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">RS.Vector3</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>the axis to rotate around.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>angle</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>the amount to rotate by in radians.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>in_object_space</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>if <code>true</code> then the axis is in object space, otherwise world.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>rotate_target_point</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>if <code>true</code> then the target point is rotated by the same amount. Otherwise
+we keep looking at the current target point.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="rotate_around_point">
+            <a class="share-icon" href="#rotate_around_point"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                rotate_around_point
+            </span>
+            <span class="signature">(point, dx, dy, dz, <span class="optional">rotate_target_point</span>)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Performs a ZYX Euter rotation around a given world space point. If <code>rotate_target_point`</code> is true
+and the target point is not at the same location as the given point, then the target point is also rotated
+around the point.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>point</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">RS.Vector3</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>the point to rotate around.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>dx</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>the X rotation in radians.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>dy</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>the Y rotation in radians.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>dz</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>the Z rotation in radians.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>rotate_target_point</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>if <code>true</code> then the target point is rotated by the same amount. Otherwise
+we keep looking at the current target point.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="set_rotation">
+            <a class="share-icon" href="#set_rotation"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                set_rotation
+            </span>
+            <span class="signature">(x, y, z, <span class="optional">rotate_target_point</span>)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>This sets the rotation of the transform. If rotate_target_point is <code>true`</code> then the target point
+will be rotated around the translation vector.</p>
+<p>If <code>rotate_target_point</code> is <code>false</code>, and we are following the target point then this will only
+apply the <code>z</code> rotation as we must keep looking at the target point.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>X rotation in radians.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>Y rotation in radians.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>z</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>Z rotation in radians.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>rotate_target_point</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>if <code>true</code> then the target point is rotated by the same amount.
+Otherwise we keep looking at the current target point</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="set_rotation_around_axis">
+            <a class="share-icon" href="#set_rotation_around_axis"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                set_rotation_around_axis
+            </span>
+            <span class="signature">(axis, angle, <span class="optional">rotate_target_point</span>)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Sets the rotation of the transform about the given axis by the given angle in radians. If <code>rotate_target_point</code>
+is set to true then the target point is also rotated.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>axis</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">RS.Vector3</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>the axis to rotate around.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>angle</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>the amount to rotate by in radians.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>rotate_target_point</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>if <code>true</code> then the target point is rotated by the same amount. Otherwise
+we keep looking at the current target point.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="set_target_point">
+            <a class="share-icon" href="#set_target_point"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                set_target_point
+            </span>
+            <span class="signature">(target_point, <span class="optional">reset_y_vector</span>)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Sets the target point. Target point CANNOT be the same as the translation vector.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>target_point</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">RS.Vector3</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>the target point.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>reset_y_vector</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>if <code>true</code> and we are following the target point then
+the transform will reset to be oriented up. Otherwise the current roll will be preserved.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="set_translation">
+            <a class="share-icon" href="#set_translation"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                set_translation
+            </span>
+            <span class="signature">(x, y, z, <span class="optional">translate_target</span>)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Sets the translation in world space.
+Resulting translation CANNOT be the same as the target point.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>the X translation.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>the Y translation.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>z</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>the Z translation.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>translate_target</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>if <code>true</code> then the target point is moved to be
+at the same relative location as previously.
+Otherwise the transform will look at the old target point after translation.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="translate">
+            <a class="share-icon" href="#translate"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                translate
+            </span>
+            <span class="signature">(dx, dy, dz, <span class="optional">in_object_space</span>, <span class="optional">translate_target</span>)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Translates the transform either world space or object space.
+Resulting target point CANNOT be the same as translation vector.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>dx</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>the amount to translate in X.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>dy</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>the amount to translate in Y.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>dz</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>the amount to translate in Z.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>in_object_space</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>if <code>true</code> then translates in object space, otherwise world.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>translate_target</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>if <code>true</code> then the target point is translated by the same amount.
+Otherwise the transform will look at the old target point after translation.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="translate_target_point">
+            <a class="share-icon" href="#translate_target_point"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                translate_target_point
+            </span>
+            <span class="signature">(dx, dy, dz, <span class="optional">in_object_space</span>)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Translates the target point in either world space or object space.
+Resulting target point CANNOT be the same as translation vector.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>dx</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>the amount to translate in X.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>dy</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>the amount to translate in Y.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>dz</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>the amount to translate in Z.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>in_object_space</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>if <code>true</code> then translates in object space, otherwise world.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+    
+    
+
+    
+</article>
+
+</section>  
+
+
+
+
+
+        
+
+        <footer class="content-size">
+            <div class="footer">
+                Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Apr 12 2019 14:54:43 GMT+1000 (Australian Eastern Standard Time)
+            </div>
+        </footer>
+    </div>
+</div>
+<script>prettyPrint();</script>
+<script src="scripts/main.js"></script>
+</body>
+</html>
