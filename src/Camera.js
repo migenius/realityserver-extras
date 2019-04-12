@@ -6,29 +6,30 @@ import { Transform_target } from './Transform_target';
 import { Utils } from 'realityserver-client';
 
 /**
- * @file Camera.js
- * Camera class.
+ * The Camera class allows simple camera manipulation. Events are emitted whenever
+ * underlying properties are changed to allow the user to update RealityServer&reg; or
+ * other system componenets as necessary.
+ * @memberof RS
  */
+class Camera extends Utils.EventEmitter {
 
-/**
- * @class Camera
- * A client side representation of a camera.
- */
-
-/**
- * @ctor
- * Creates a %Camera.
- */
-export class Camera extends Utils.EventEmitter {
-
+    /**
+     * Enum representing a Y up camera
+     */
     static get Y_UP() {
         return 0;
     }
 
+    /**
+     * Enum representing a Y up camera
+     */
     static get Z_UP() {
         return 1;
     }
 
+    /**
+     * Creates a perspective Y up camera with a 90 degree field of view.
+     */
     constructor() {
         super();
         this.m_transform = new Transform_target();
@@ -42,9 +43,8 @@ export class Camera extends Utils.EventEmitter {
     }
 
     /**
-     * Clones a Camera. This performs a deep copy on this Camera.
-     *
-     * @return The cloned Camera.
+     * Returns a copy of this Camera.
+     * @return {RS.Camera}
      */
     clone() {
         let new_camera = new Camera();
@@ -53,8 +53,11 @@ export class Camera extends Utils.EventEmitter {
     }
 
     /**
-     * Used to put values onto a newly created clone. Can be extended
-     * by subclasses to include more values.
+     * Populates the clone with all the required information.
+     * Can be used by subclasses so that they can add their own
+     * data to the populating process.
+     * @param {RS.Camera} clone the clone to populate
+     * @access private
      */
     populate_clone(clone) {
         clone.m_orthographic = this.m_orthographic;
@@ -66,6 +69,12 @@ export class Camera extends Utils.EventEmitter {
         clone.m_scene_up_direction = this.m_scene_up_direction;
     }
 
+    /**
+     * Emits a change event
+     * @param {String} what what has changed
+     * @param {Object} value the new value
+     * @access private
+     */
     changed(what, value) {
         this.emit(`${what}-changed`, {
             source: this,
@@ -74,22 +83,39 @@ export class Camera extends Utils.EventEmitter {
     }
 
     /**
-     * Sets the matrix of the transform from anything that Matrix4x4.setFromObject supports.
+     * The matrix of the transform. When set fires a {@link RS.Camera#event:transform-changed} event
+     * @type {RS.Matrix4x4}
      */
+    get matrix() {
+        return this.m_transform.world_to_obj;
+    }
+
     set matrix(value) {
         if (value) {
             this.m_transform.world_to_obj = value;
+            /**
+             * Transform changed event.
+             *
+             * Fired whenever the underlying transform changes
+             *
+             * @event RS.Camera#transform-changed
+             */
             this.changed('transform');
         }
-    }
-
-    get matrix() {
-        return this.m_transform.world_to_obj;
     }
 
     /**
      * Sets the camera data from either an object with appropriate properties
      * or from another Camera instance.
+     * @param {RS.Camera} camera the camera to set from or an object with the same properties
+     * @fires RS.Camera#orthographic-changed
+     * @fires RS.Camera#focal-changed
+     * @fires RS.Camera#aperture-changed
+     * @fires RS.Camera#clip_min-changed
+     * @fires RS.Camera#clip_max-changed
+     * @fires RS.Camera#up_direction-changed
+     * @fires RS.Camera#target_point-changed
+     * @fires RS.Camera#transform-changed
      */
     set_from_object(camera) {
         if (camera) {
@@ -117,7 +143,7 @@ export class Camera extends Utils.EventEmitter {
                 }
 
                 if (camera.transform !== undefined) {
-                    this.transform = camera.transform.clone();
+                    this.matrix = camera.matrix;
                 }
 
                 if (camera.scene_up_direction !== undefined) {
@@ -130,7 +156,15 @@ export class Camera extends Utils.EventEmitter {
     /**
      * Sets this camera from another.
      *
-     * @param camera The camera to set from.
+     * @param {RS.Camera} camera the camera to set from or an object with the same properties.
+     * @fires RS.Camera#orthographic-changed
+     * @fires RS.Camera#focal-changed
+     * @fires RS.Camera#aperture-changed
+     * @fires RS.Camera#clip_min-changed
+     * @fires RS.Camera#clip_max-changed
+     * @fires RS.Camera#up_direction-changed
+     * @fires RS.Camera#target_point-changed
+     * @fires RS.Camera#transform-changed
      */
     set_from_camera(camera) {
         this.transform = camera.transform.clone();
@@ -145,9 +179,11 @@ export class Camera extends Utils.EventEmitter {
     /**
      * Pans the camera.
      *
-     * @param horizontal The amount to pan in the right direction.
-     * @param vertical The amount to pan in the up direction.
-     * @param shift_target_point Move the target point with the camera.
+     * @param {Number} horizontal The amount to pan in the right direction.
+     * @param {Number} vertical The amount to pan in the up direction.
+     * @param {Boolean=} shift_target_point If `true` then pans the target as well.
+     * @fires RS.Camera#target_point-changed
+     * @fires RS.Camera#transform-changed
      */
     pan(horizontal, vertical, shift_target_point=true) {
         this.m_transform.translate(horizontal, vertical, 0, true, shift_target_point);
@@ -160,8 +196,10 @@ export class Camera extends Utils.EventEmitter {
     /**
      * Dollies the camera.
      *
-     * @param depth The amount to move along the direction vector.
-     * @param shift_target_point Move the target point along direction*i_z.
+     * @param {Number} depth The amount to move along the direction vector.
+     * @param {Boolean=} shift_target_point If `true` then dollies the target as well.
+     * @fires RS.Camera#target_point-changed
+     * @fires RS.Camera#transform-changed
      */
     dolly(depth, shift_target_point=false) {
         if (this.orthographic) {
@@ -180,9 +218,11 @@ export class Camera extends Utils.EventEmitter {
     }
 
     /**
-     * Elevates the camera.
+     * Elevates the camera and the target point
      *
-     * @param vertical The amount to move along the up vector.
+     * @param {Number} vertical The amount to move the camera  up the up vector.
+     * @fires RS.Camera#target_point-changed
+     * @fires RS.Camera#transform-changed
      */
     elevate(vertical) {
         this.m_transform.translate(0, vertical, 0, true);
@@ -193,11 +233,14 @@ export class Camera extends Utils.EventEmitter {
     /**
      * Orbits the camera. This method orbits using the initial up and right reference vectors.
      *
-     * @param vertical_axis The amount to rotate around the up vector in radians.
-     * @param horizontal_axis The amount to rorate aroung the right vector in radians.
-     * @param orbit_point The point to orbit around, if set this will change the orbit point.
+     * @param {Number} vertical_axis The amount to orbit around the up vector in radians.
+     * @param {Number} horizontal_axis The amount to orbit aroung the right vector in radians.
+     * @param {RS.Vector3=} orbit_point The point to orbit around, if provided then this becomes
+     * the new target point.
+     * @fires RS.Camera#target_point-changed
+     * @fires RS.Camera#transform-changed
      */
-    orbit(vertical_axis, horizontal_axis, orbit_point) {
+    orbit(vertical_axis, horizontal_axis, orbit_point=null) {
         if (orbit_point) {
             this.setTargetPoint(orbit_point, false);
         }
@@ -213,10 +256,12 @@ export class Camera extends Utils.EventEmitter {
      * however if you choose to orbit around a different point than the target point you can also rotate the
      * target point as well.
      *
-     * @param point The point to orbit around, this will NOT change the target point.
-     * @param vertical_axis The amount to rotate around the up vector in radians.
-     * @param horizontal_axis The amount to rorate aroung the right vector in radians.
-     * @param shift_target_point If true the target point will also rotate around the point.
+     * @param {RS.Vector3> point The point to orbit around, this will NOT change the target point.
+     * @param {Number} vertical_axis The amount to rotate around the up vector in radians.
+     * @param {Number} horizontal_axis The amount to rorate aroung the right vector in radians.
+     * @param {Boolean=} shift_target_point If true the target point will also rotate around the point.
+     * @fires RS.Camera#target_point-changed
+     * @fires RS.Camera#transform-changed
      */
     orbit_around_point(point, vertical_axis, horizontal_axis, shift_target_point=false) {
         this.m_transform.rotate_around_point(point, horizontal_axis, vertical_axis, 0, shift_target_point);
@@ -227,11 +272,15 @@ export class Camera extends Utils.EventEmitter {
     }
 
     /**
-     * Rotates the camera
+     * Rotates the camera around itself.
      *
-     * @param vertical_axis Amount to rotate around the up vector in radians.
-     * @param horizontal_axis Amount to rotate around the right vector in radians.
-     * @param direction_axis Amount to rotate around the direction vector in radians.
+     * @param {Number} vertical_axis Amount to rotate around the up vector in radians.
+     * @param {Number} horizontal_axis Amount to rotate around the right vector in radians.
+     * @param {Number} direction_axis Amount to rotate around the direction vector in radians (roll).
+     * @param {Boolean=} shift_target_point If `true`` the target point will also rotate around the point.
+     * If `false`` then only the `direction_axis` rotation will be applied.
+     * @fires RS.Camera#target_point-changed
+     * @fires RS.Camera#transform-changed
      */
     rotate(vertical_axis, horizontal_axis, direction_axis, shift_target_point=true) {
         if (isNaN(direction_axis)) {
@@ -247,39 +296,44 @@ export class Camera extends Utils.EventEmitter {
     }
 
     /**
-     * Tilts the camera by rotating around the right vector of the camera.
+     * Tilts the camera by rotating around the right vector of the camera. This also rotate the
+     * target point.
      *
-     * @param horizontal_axis The amount, in radians, to tilt.
+     * @param {Number} horizontal_axis The amount, in radians, to tilt.
+     * @fires RS.Camera#target_point-changed
+     * @fires RS.Camera#transform-changed
      */
-    tilt(horizontal_axis, shift_target_point=true) {
-        this.m_transform.rotate(horizontal_axis, 0, 0, shift_target_point);
-        if (shift_target_point) {
-            this.changed('target_point');
-        }
+    tilt(horizontal_axis) {
+        this.m_transform.rotate(horizontal_axis, 0, 0, true);
+        this.changed('target_point');
         this.changed('transform');
     }
 
     /**
-     * Spins the camera by rotating around the up vector of the camera.
+     * Spins the camera by rotating around the up vector of the camera. This also rotate the
+     * target point.
      *
-     * @param vertical_axis The amount, in radians, to spin.
+     * @param {Number} vertical_axis The amount, in radians, to spin.
+     * @fires RS.Camera#transform-changed
      */
-    spin(vertical_axis, shift_target_point=true) {
-        this.m_transform.rotate(0, vertical_axis, 0, shift_target_point);
-        if (shift_target_point) {
-            this.changed('target_point');
-        }
+    spin(vertical_axis) {
+        this.m_transform.rotate(0, vertical_axis, 0, true);
         this.changed('transform');
     }
 
     /**
-     * Rotates the camera.
+     * Rotates the camera around a given axis.
      *
-     * @param axis The axis to rotate about.
-     * @param angle The amount, in radians, to rotate.
+     * @param {RS.Vector3} axis the axis to rotate around.
+     * @param {Number} angle the amount to rotate by in radians.
+     * @param {Boolean=} in_camera_space if `true` then the axis is in camera space, otherwise world.
+     * @param {Boolean=} rotate_target_point if `true` then the target point is rotated by the same amount. Otherwise
+     * we keep looking at the current target point only.
+     * @fires RS.Camera#target_point-changed
+     * @fires RS.Camera#transform-changed
      */
-    rotate_around_axis(axis, angle, inCameraSpace=false, shift_target_point=true) {
-        this.m_transform.rotate_around_axis(axis, angle, inCameraSpace, shift_target_point);
+    rotate_around_axis(axis, angle, in_camera_space=false, shift_target_point=true) {
+        this.m_transform.rotate_around_axis(axis, angle, in_camera_space, shift_target_point);
         if (shift_target_point) {
             this.changed('target_point');
         }
@@ -289,9 +343,12 @@ export class Camera extends Utils.EventEmitter {
     /**
      * Moves the camera to a given location.
      *
-     * @param location The position to move to.
-     * @param shift_target_point Set this parameter to true to shift the target point of the camera along the vector
-     * new_position -> old_position.
+     * @param {RS.Vector3} location The position to move to.
+     * @param {Boolean=} shift_target_point If `true` then the target point is moved to be
+     * at the same relative location as previously. Otherwise the transform will look at the
+     * old target point after translation.
+     * @fires RS.Camera#target_point-changed
+     * @fires RS.Camera#transform-changed
      */
     set_location(location, shift_target_point=true) {
         this.m_transform.set_translation(location.x, location.y, location.z, shift_target_point);
@@ -302,10 +359,13 @@ export class Camera extends Utils.EventEmitter {
     }
 
     /**
-     * Moves the camera.
+     * Moves the camera by the given amount
      *
-     * @param move The vector to move along.
-     * @param shift_target_point Set this parameter to true to shift the target point of the camera along v.
+     * @param {RS.Vector3} move The vector to move along.
+     * @param {Boolean=} shift_target_point If `true` then the target point is moved as well,
+     * otherwise the camera will look at the old target point after translation.
+     * @fires RS.Camera#target_point-changed
+     * @fires RS.Camera#transform-changed
      */
     translate(move, shift_target_point=true) {
         this.m_transform.translate(move.x, move.y, move.z, false, shift_target_point);
@@ -318,9 +378,8 @@ export class Camera extends Utils.EventEmitter {
     /**
      * Transforms a point into camera space.
      *
-     * @param point The point to tranform.
-     * @param result The result of the transform.
-     * @return Always true.
+     * @param point {RS.Vector4} The point to tranform.
+     * @param result {RS.Vector4} Receives the result of the transform.
      */
     transform_point(point, result) {
         const world_to_cam = this.transform.world_to_obj;
@@ -330,11 +389,10 @@ export class Camera extends Utils.EventEmitter {
     }
 
     /**
-     * Transforms a vector to camera space.
+     * Transforms a direction into camera space.
      *
-     * @param direction The vector to transform.
-     * @param result The result of the transform.
-     * @return Always true.
+     * @param point {RS.Vector4} The point to tranform.
+     * @param result {RS.Vector4} Receives the result of the transform.
      */
     transform_direction(direction, result) {
         const world_to_cam = this.transform.world_to_obj;
@@ -344,11 +402,10 @@ export class Camera extends Utils.EventEmitter {
     }
 
     /**
-     * Transforms a vector from camera space to world space.
+     * Transforms a direction from camera space into world space.
      *
-     * @param direction The vector to transform.
-     * @param result The result of the transform.
-     * @result Always true.
+     * @param point {RS.Vector4} The point to tranform.
+     * @param result {RS.Vector4} Receives the result of the transform.
      */
     transform_direction_to_world(direction, result) {
         let cam_to_world = this.transform.world_to_obj;
@@ -359,12 +416,11 @@ export class Camera extends Utils.EventEmitter {
     }
 
     /**
-      * Compares two cameras for equality. Equality means apertures, focal lengths, fields of view and transforms
-      * are the same.
+      * Compares this camera to another. The camera are equal if the aperture, focal length,
+      * field of view and matrix are the same.
       *
-      * @param camera1 A camera.
-      * @param camera2 Another camera.
-      * @result True if camera1 equals camera2.
+      * @param {RS.Camera} rhs the camera to compare
+      * @result `true` if `rhs` matches this camera.
       */
     equal(rhs) {
         if (rhs === this) {
@@ -387,7 +443,9 @@ export class Camera extends Utils.EventEmitter {
     }
 
     /**
-     * Aligns the camera to the horizontal plane
+     * Forces the camera to be horizontal.
+     * @fires RS.Camera#target_point-changed
+     * @fires RS.Camera#transform-changed
      */
     level_camera() {
         // Negative angle to the horizon based on the up vector.
@@ -400,24 +458,34 @@ export class Camera extends Utils.EventEmitter {
         this.changed('transform');
     }
 
+    /**
+     * Whether the camera is orthographic or perspective. When changed fires a
+     * {@link RS.Camera#event:orthographic-changed} event
+     * @type {Boolean}
+     */
     get orthographic() {
         return this.m_orthographic;
     }
-    /**
-     * Sets the orthographic mode of the camera.
-     *
-     * @param ortho Set to true to enable orthographic mode.
-     */
+
     set orthographic(value) {
         if (value !== this.m_orthographic) {
             this.m_orthographic = value;
+            /**
+             * Orthographic changed event.
+             *
+             * Fired when the camera changes between orthographic and perspective
+             *
+             * @event RS.Camera#orthographic-changed
+             */
             this.changed('orthographic');
         }
     }
 
     /**
-     * The half field of view of the camera.
-    */
+     * The half field of view of the camera in radians. When changed fires a
+     * {@link RS.Camera#event:aperture-changed} event
+     * @type {Number}
+     */
     get field_of_view() {
         if (this.m_orthographic) {
             return -1;
@@ -428,12 +496,21 @@ export class Camera extends Utils.EventEmitter {
     set field_of_view(value) {
         if (!this.m_orthographic) {
             this.aperture = (this.m_focal * Math.tan(value))*2;
+            /**
+             * Aperture changed event.
+             *
+             * Fired when the camera changes aperture
+             *
+             * @event RS.Camera#aperture-changed
+             */
             this.changed('aperture');
         }
     }
 
     /**
-     * The aperture of the camera.
+     * The aperture of the camera. When changed fires a
+     * {@link RS.Camera#event:aperture-changed} event.
+     * @type {Number}
      */
     get aperture() {
         return this.m_aperture;
@@ -453,19 +530,33 @@ export class Camera extends Utils.EventEmitter {
     }
 
     /**
-     * The focal length of the camera.
+     * The focal length of the camera. When changed fires a
+     * {@link RS.Camera#event:focal-changed} event.
+     * @type {Number}
      */
     get focal() {
         return this.m_focal;
     }
 
     set focal(focal) {
-        this.m_focal = focal;
-        this.changed('focal');
+        if (this.m_focal !== focal) {
+            this.m_focal = focal;
+            /**
+             * Focal changed event.
+             *
+             * Fired when the camera changes focal
+             *
+             * @event RS.Camera#focal-changed
+             */
+            this.changed('focal');
+        }
     }
 
     /**
-     * The transform of the camera.
+     * The transform of the camera. When changed fires a
+     * {@link RS.Camera#event:transform-changed} event and a
+     * {@link RS.Camera#event:target_point-changed} event.
+     * @type {RS.Transform_target}
      */
     get transform() {
         return this.m_transform;
@@ -480,64 +571,110 @@ export class Camera extends Utils.EventEmitter {
     }
 
     /**
-    * The clip max of the view frustum
+     * The clip max of the view frustum. When changed fires a
+     * {@link RS.Camera#event:clip_max-changed} event
     */
     get clip_max() {
         return this.m_clip_max;
     }
 
     set clip_max(value) {
-        this.m_clip_max = value;
-        this.changed('clip_max');
+        if (this.m_clip_max !== value) {
+            this.m_clip_max = value;
+            /**
+             * Clip max changed event.
+             *
+             * Fired when the camera clip max changes
+             *
+             * @event RS.Camera#clip_max-changed
+             */
+            this.changed('clip_max');
+        }
     }
 
     /**
-     * The clip min of the view frustum
-     */
+     * The clip min of the view frustum. When changed fires a
+     * {@link RS.Camera#event:clip_min-changed} event
+    */
     get clip_min() {
         return this.m_clip_min;
     }
 
     set clip_min(value) {
-        this.m_clip_min = value;
-        this.changed('clip_min');
+        if (this.m_clip_min !== value) {
+            this.m_clip_min = value;
+            /**
+             * Clip max changed event.
+             *
+             * Fired when the camera clip max changes
+             *
+             * @event RS.Camera#clip_min-changed
+             */
+            this.changed('clip_min');
+        }
     }
 
     /**
-     * Sets the target point of the camera.
+     * Sets the target point of the camera and, if following the target point,
+     * makes the camera look at it.
      *
-     * @param orbit_point The new target point.
+     * @param {RS.Vector3} target_point The new target point.
+     * @param {Boolean=} reset_up_vector if `true`, and following the target point,
+     * then the camera roll will be reset.
+     * @fires RS.Camera#target_point-changed
+     * @fires RS.Camera#transform-changed
      */
     set_target_point(target_point, reset_up_vector=true) {
         this.m_transform.set_target_point(target_point, reset_up_vector);
+        /**
+         * Target point changed event.
+         *
+         * Fired when the camera target point
+         *
+         * @event RS.Camera#target_point-changed
+         */
         this.changed('target_point');
-        this.changed('transform');
+        if (this.follow_target_point) {
+            this.changed('transform');
+        }
+    }
+
+    /**
+     * The target point of the camera. When set fires a {@link RS.Camera#event:target_point-changed}
+     * event. If the camera is following the target point then it is rotated to look at the target point
+     * and fires a {@link RS.Camera#event:transform-changed} event.
+     * @type {RS.Vector3}
+     */
+    get target_point() {
+        return this.m_transform.target_point;
     }
 
     set target_point(value) {
         this.set_target_point(value, false);
     }
 
-    get target_point() {
-        return this.m_transform.target_point;
-    }
-
     /**
      * The look direction vector of the camera.
+     * @type {RS.Vector3}
+     * @readonly
      */
     get direction() {
         return this.m_transform.z_axis.scale(-1);
     }
 
     /**
-     * The up vector of the camera.
+     * The actual up direction vector of the camera.
+     * @type {RS.Vector3}
+     * @readonly
      */
     get up() {
         return this.m_transform.y_axis;
     }
 
     /**
-     * The right vector of the camera.
+     * The right direction vector of the camera.
+     * @type {RS.Vector3}
+     * @readonly
      */
     get right() {
         return this.m_transform.x_axis;
@@ -545,15 +682,24 @@ export class Camera extends Utils.EventEmitter {
 
     /**
      * The position of the camera in world space.
+     * @type {RS.Vector3}
+     * @readonly
      */
     get location() {
         return this.m_transform.translation;
     }
 
     /**
-     * The up direction of the scene the camera is in.
-     * Can be either Y_UP or Z_UP.
+     * The nominal up direction of the camera. Can be either {@link RS.Camera.Y_UP} or
+     * {@link RS.Camera.Z_UP}. When set the camera will rotate to match the new up direction and
+     * fires a {@link RS.Camera#event:up_direction-changed} and
+     * {@link RS.Camera#event:transform-changed} event.
+     * @type {Number}
      */
+    get scene_up_direction() {
+        return this.m_scene_up_direction;
+    }
+
     set scene_up_direction(value) {
         if (this.m_scene_up_direction !== value) {
             this.m_scene_up_direction = value;
@@ -562,13 +708,27 @@ export class Camera extends Utils.EventEmitter {
             } else {
                 this.m_transform.up_direction = Transform.Z_AXIS;
             }
+            /**
+             * Up direction changed event.
+             *
+             * Fired when the camera up direction changes.
+             *
+             * @event RS.Camera#up_direction-changed
+             */
             this.changed('up_direction');
             this.changed('transform');
         }
     }
 
-    get scene_up_direction() {
-        return this.m_scene_up_direction;
+    /**
+     * Whether to follow the target point or not. When `true` the camera will always look at the
+     * target point, when `false` it can be rotated away. When set to `true` will fire a
+     * {@link RS.Camera#event:transform-changed} event.
+     * @type {Boolean}
+     * @default true
+     */
+    get follow_target_point() {
+        return this.transform.follow_target_point;
     }
 
     set follow_target_point(value) {
@@ -581,7 +741,6 @@ export class Camera extends Utils.EventEmitter {
         }
     }
 
-    get follow_target_point() {
-        return this.transform.follow_target_point;
-    }
 }
+
+export { Camera };

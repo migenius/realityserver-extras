@@ -3,14 +3,6 @@
  *****************************************************************************/
 import { Vector3, Vector4, Matrix4x4 } from 'realityserver-client';
 
-/**
- * @file Transform.js
- * Defines the Transform class.
- */
-
-/**
- * @class Transform.
- */
 
 const _X_AXIS = new Vector4(1, 0, 0, 0);
 const _Y_AXIS = new Vector4(0, 1, 0, 0);
@@ -21,30 +13,56 @@ const _NEG_Y_AXIS = new Vector4( 0, -1, 0, 0);
 const _NEG_Z_AXIS = new Vector4( 0, 0, -1, 0);
 
 /**
- * @ctor
- * Creates a %Transform.
+ * The Transform class provides a more user friendly way of manipulating matrices
+ * @memberof RS
  */
-export class Transform {
+class Transform {
+    /**
+     * The X Axis vector
+     * @type {Vector4}
+    */
     static get X_AXIS() {
         return _X_AXIS;
     }
+    /**
+     * The Y Axis vector
+     * @type {Vector4}
+    */
     static get Y_AXIS() {
         return _Y_AXIS;
     }
+    /**
+     * The Z Axis vector
+     * @type {Vector4}
+    */
     static get Z_AXIS() {
         return _Z_AXIS;
     }
-
+    /**
+     * The negative X Axis vector
+     * @type {Vector4}
+    */
     static get NEG_X_AXIS() {
         return _NEG_X_AXIS;
     }
+    /**
+     * The negative Y Axis vector
+     * @type {Vector4}
+    */
     static get NEG_Y_AXIS() {
         return _NEG_Y_AXIS;
     }
+    /**
+     * The negative Z Axis vector
+     * @type {Vector4}
+    */
     static get NEG_Z_AXIS() {
         return _NEG_Z_AXIS;
     }
 
+    /**
+     * The default constructor initializes with an identity matrix.
+     */
     constructor() {
         this.m_translation = new Vector4();
 
@@ -59,9 +77,9 @@ export class Transform {
         this.m_world_to_obj = new Matrix4x4();
     }
 
-
     /**
-     * Returns a new transform exactly the same as the current one.
+     * returns a copy of this Transform.
+     * @return {RS.Transform}
      */
     clone() {
         let transform = new Transform();
@@ -74,6 +92,7 @@ export class Transform {
      * Populates the clone with all the required information.
      * Can be used by subclasses so that they can add their own
      * data to the populating process.
+     * @access private
      */
     populate_clone(clone) {
         clone.m_translation.set(this.m_translation);
@@ -85,6 +104,10 @@ export class Transform {
         clone.m_world_to_obj.set(this.m_world_to_obj);
     }
 
+    /**
+     * Populates the underling matrix.
+     * @access private
+     */
     derive_world_to_obj() {
         this.m_world_to_obj.xx = this.m_x_axis.x;
         this.m_world_to_obj.yx = this.m_x_axis.y;
@@ -132,7 +155,8 @@ export class Transform {
     }
 
     /**
-     * Calculates the location, direction and up from the current world_to_obj matrix.
+     * Populates the underling translation, axis and scale from the matrix.
+     * @access private
      */
     derive_vectors() {
         let obj_to_world = new Matrix4x4(this.m_world_to_obj);
@@ -143,29 +167,24 @@ export class Transform {
 
         this.m_z_axis.set(Transform.Z_AXIS);
         this.m_z_axis.rotate(obj_to_world);
+        this.m_scale.z = new Vector3(this.m_z_axis).length();
         this.m_z_axis.normalize();
 
         this.m_y_axis.set(Transform.Y_AXIS);
         this.m_y_axis.rotate(obj_to_world);
+        this.m_scale.y = new Vector3(this.m_y_axis).length();
         this.m_y_axis.normalize();
 
         this.m_x_axis.set(Transform.X_AXIS);
         this.m_x_axis.rotate(obj_to_world);
+        this.m_scale.x = new Vector3(this.m_x_axis).length();
         this.m_x_axis.normalize();
     }
 
     /**
-     * Allows for the transform to be set directly from a given Matrix4x4.
-     *
-     * @param world_to_obj The matrix to set the transform to. While it is an object
-     *                      it must be an object that Matrix4x4.setFromObject can recognise.
+     * The World to Object space Matrix represented by this Transform
+     * @type {RS.Matrix4x4}
      */
-    set world_to_obj(world_to_obj) {
-        this.m_world_to_obj.set(world_to_obj);
-        this.derive_vectors();
-        this.m_dirty_matrix = false;
-    }
-
     get world_to_obj() {
         if (this.m_dirty_matrix) {
             this.derive_world_to_obj();
@@ -173,14 +192,25 @@ export class Transform {
         return this.m_world_to_obj.clone();
     }
 
+    set world_to_obj(world_to_obj) {
+        this.m_world_to_obj.set(world_to_obj);
+        this.derive_vectors();
+        this.m_dirty_matrix = false;
+    }
+
     /**
      * Sets the elements of the translation vector.
+     * @access private
      */
     _set_translation(x, y, z) {
         this.m_translation.set(x, y, z);
         this.m_dirty_matrix = true;
     }
 
+    /**
+     * The translation component of this Transform
+     * @type {RS.Vector3}
+     */
     get translation() {
         return new Vector3(this.m_translation);
     }
@@ -190,25 +220,50 @@ export class Transform {
     }
 
     /**
-     * Translates the transform by {dx, dy, dz} in either world space or object space.
+     * Translates the transform by the given amount in either world space or object space.
+     * @param {Number} dx the amount to translate in X.
+     * @param {Number} dy the amount to translate in Y.
+     * @param {Number} dz the amount to translate in Z.
+     * @param {Boolean=} in_object_space if `true` then translates in object space, otherwise world.
      */
     translate(dx, dy, dz, in_object_space=true) {
         this._translate_vector(dx, dy, dz, this.m_translation, in_object_space);
         this.m_dirty_matrix = true;
     }
 
+    /**
+     * The X axis of this transform
+     * @readonly
+     * @type {RS.Vector3}
+     */
     get x_axis() {
         return new Vector3(this.m_x_axis);
     }
+
+    /**
+     * The Y axis of this transform
+     * @readonly
+    * @type {RS.Vector3}
+     */
     get y_axis() {
         return new Vector3(this.m_y_axis);
     }
+
+    /**
+     * The Z axis of this transform
+     * @readonly
+     * @type {RS.Vector3}
+     */
     get z_axis() {
         return new Vector3(this.m_z_axis);
     }
 
     /**
      * Sets the absolute values of the elements of the scaling vector.
+     * @param {Number} x the scale in X.
+     * @param {Number} y the scale in Y.
+     * @param {Number} z the scale in Z.
+     * @access private
      */
     _set_scale(x, y, z) {
         this.m_scale.set(x, y, z);
@@ -216,7 +271,11 @@ export class Transform {
     }
 
     /**
-     * Scales the transform scaling vector accumulatively.
+     * Scales the current scaling vector.
+     * @param {Number} x scaling factor in X.
+     * @param {Number} y scaling factor in Y.
+     * @param {Number} z scaling factor in Z.
+     * @access private
      */
     _scale(dx, dy, dz) {
         this.m_scale.x *= dx;
@@ -225,6 +284,10 @@ export class Transform {
         this.m_dirty_matrix = true;
     }
 
+    /**
+     * The scaling value of this transform
+     * @type {RS.Vector3}
+     */
     get scale() {
         return this.m_scale.clone();
     }
@@ -233,13 +296,20 @@ export class Transform {
         this._set_scale(value.x, value.y, value.z);
     }
 
+    /**
+     * Scales the transform.
+     * @param {Vector3} value The amount to scale by
+     */
     multiply_scale(value) {
         this._scale(value.x, value.y, value.z);
     }
 
 
     /**
-     * Rotates the transform by {dx, dy, dz}.
+     * Performs an Euler rotation on the transform in ZYX order.
+     * @param {Number} x X rotation in radians.
+     * @param {Number} y Y rotation in radians.
+     * @param {Number} z Z rotation in radians.
      */
     rotate(dx, dy, dz) {
         this._rotate_z_vectors(this.m_z_axis, dz);
@@ -250,7 +320,10 @@ export class Transform {
     }
 
     /**
-     * This sets the rotation of the transform.
+     * Sets an Euler rotation on the transform in ZYX order.
+     * @param {Number} x X rotation in radians.
+     * @param {Number} y Y rotation in radians.
+     * @param {Number} z Z rotation in radians.
      */
     set_rotation(x, y, z) {
         this.m_x_axis.set(Transform.X_AXIS);
@@ -261,8 +334,11 @@ export class Transform {
     }
 
     /**
-     * Rotates the transform about the given axis by the given angle in radians. If in_object_space is set to true,
-     * then the axis will be transform into object space first.
+     * Rotates the transform about the given axis by the given angle in radians. If in_object_space is set to `true`,
+     * then the axis will be transformed into object space first.
+     * @param {RS.Vector3} axis the axis to rotate around.
+     * @param {Number} angle the amount to rotate by in radians.
+     * @param {Boolean=} in_object_space if `true` then the axis is in object space, otherwise world.
      */
     rotate_around_axis(axis, angle, in_object_space=true) {
         this._rotate_vectors(axis, angle, [ this.m_x_axis, this.m_y_axis, this.m_z_axis ], in_object_space);
@@ -272,7 +348,9 @@ export class Transform {
 
 
     /**
-     * Sets the rotation of the transform about the given axis by the given angle in radians.
+     * Sets the rotation of the transform about the given world space axis by the given angle in radians.
+     * @param {RS.Vector3} axis the axis to rotate around.
+     * @param {Number} angle the amount to rotate by in radians.
      */
     set_rotation_around_axis(axis, angle) {
         this.m_x_axis.set(Transform.X_AXIS);
@@ -283,7 +361,11 @@ export class Transform {
     }
 
     /**
-     * Rotates the transform around a given world space point by {dx, dy, dz}.
+     * Rotates the transform around a given world space point
+     * @param {RS.Vector3} point the point to rotate around.
+     * @param {Number} dx the amount to rotate around the transforms X axis by in radians.
+     * @param {Number} dy the amount to rotate around the transforms Y axis by in radians.
+     * @param {Number} dz the amount to rotate around the transforms Z axis by in radians.
      */
     rotate_around_point(point, dx, dy, dz) {
         const to_point = this.translation.subtract(point);
@@ -300,8 +382,13 @@ export class Transform {
     }
 
     /**
-     * Translates a given vector in either world space or object space by {dx, dy, dz}.
-     * This can be used by subclasses to
+     * Utility function to translates a given vector.
+     * @param {Number} dx the amount to translate in X.
+     * @param {Number} dy the amount to translate in Y.
+     * @param {Number} dz the amount to translate in Z.
+     * @param {RS.Vector3} vector the vector to translate.
+     * @param {Boolean=} in_object_space if `true` then translates in object space, otherwise world.
+     * @access private
      */
     _translate_vector(dx, dy, dz, vector, in_object_space=false) {
         if (!!in_object_space) {
@@ -322,7 +409,12 @@ export class Transform {
     }
 
     /**
-     * Rotates an array of vectors around the given axis by the angle (in radians) in either world or object space.
+     * Utility function to rotate an array of vectors around the given axis by the angle (in radians).
+     * @param {RS.Vector3} axis the axis to rotate around.
+     * @param {Number} angle the amount to rotate by in radians.
+     * @param {Array} rotation_vectors array of RS.Vector4 to rotate.
+     * @param {Boolean=} in_object_space if `true` then the axis is in object space, otherwise world.
+     * @access private
      */
     _rotate_vectors(axis, angle, rotation_vectors, in_object_space=false) {
         let m = new Matrix4x4();
@@ -337,10 +429,14 @@ export class Transform {
     }
 
     /**
-     * Rotates the transform around the current x axis by angle.
-     * An optional array of vectors can be given that will also be rotated.
+     * Utility function to rotate the Y and Z axis around the given axis by the angle.
+     * @param {RS.Vector3} axis the axis to rotate around.
+     * @param {Number} angle the amount to rotate by in radians.
+     * @param {Array=} rotation_vectors additional array of RS.Vector4 to rotate.
+     * @param {Boolean=} in_object_space if `true` then the axis is in object space, otherwise world.
+     * @access private
      */
-    _rotate_x_vectors(axis, angle, rotation_vectors, in_object_space=false) {
+    _rotate_x_vectors(axis, angle, rotation_vectors=null, in_object_space=false) {
         let vectors = [ this.m_y_axis, this.m_z_axis ];
         if (rotation_vectors != null) {
             vectors = vectors.concat(rotation_vectors);
@@ -351,8 +447,12 @@ export class Transform {
     }
 
     /**
-     * Rotates the transform around the current y axis by angle.
-     * An optional array of vectors can be given that will also be rotated.
+     * Utility function to rotate the X and Z axis around the given axis by the angle.
+     * @param {RS.Vector3} axis the axis to rotate around.
+     * @param {Number} angle the amount to rotate by in radians.
+     * @param {Array=} rotation_vectors additional array of RS.Vector4 to rotate.
+     * @param {Boolean=} in_object_space if `true` then the axis is in object space, otherwise world.
+     * @access private
      */
     _rotate_y_vectors(axis, angle, rotation_vectors, in_object_space=false) {
         let vectors = [ this.m_x_axis, this.m_z_axis ];
@@ -365,8 +465,12 @@ export class Transform {
     }
 
     /**
-     * Rotates the transform around the current z axis by angle.
-     * An optional array of vectors can be given that will also be rotated.
+     * Utility function to rotate the X and Y axis around the given axis by the angle.
+     * @param {RS.Vector3} axis the axis to rotate around.
+     * @param {Number} angle the amount to rotate by in radians.
+     * @param {Array=} rotation_vectors additional array of RS.Vector4 to rotate.
+     * @param {Boolean=} in_object_space if `true` then the axis is in object space, otherwise world.
+     * @access private
      */
     _rotate_z_vectors(axis, angle, rotation_vectors, in_object_space=false) {
         let vectors = [ this.m_x_axis, this.m_y_axis ];
@@ -378,3 +482,5 @@ export class Transform {
         this.m_dirty_matrix = true;
     }
 }
+
+export { Transform };

@@ -11,6 +11,7 @@
   "unpkg": "lib/umd/realityserver-extras.min.js",
   "scripts": {
     "build": "node scripts/build.js",
+    "build:doc": "jsdoc -c .jsdoc.conf.js",
     "eslint": "eslint src scripts test",
     "test": "jest"
   },
