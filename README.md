@@ -14,4 +14,4 @@ Download the [minified](https://unpkg.com/@migenius/realityserver-extras@1.0.0 "
 
 ## API Documentation
 
-TODO: link to live docs go here
+The RealityServer Extras API documentation can be found [here](https://migenius.github.io/realityserver-extras/ "RealityServer Extras").
