@@ -21,3 +21,6 @@ For Node.js and bundlers simply install the modue:
 ```shell
 $ npm install @migenius/realityserver-extras
 ```
+
+## GitHub
+The RealityServer&reg; Extras repository can be found on [GitHub](https://github.com/migenius/realityserver-extras "RealityServer Extras").
