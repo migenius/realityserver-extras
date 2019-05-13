@@ -53,5 +53,7 @@
   "files": [
     "lib"
   ],
-  "dependencies": {}
+  "dependencies": {
+    "@migenius/realityserver-client": "^1.0.0"
+  }
 }

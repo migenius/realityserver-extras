@@ -2,7 +2,7 @@
  * Copyright 2010-2019 migenius pty ltd, Australia. All rights reserved.
  *****************************************************************************/
 import { Transform } from '../src/Transform';
-import { Vector3, Matrix4x4, Math as RS_math } from 'realityserver-client';
+import { Vector3, Matrix4x4, Math as RS_math } from '@migenius/realityserver-client';
 
 test('default', () => {
     const transform = new Transform();

@@ -35,7 +35,7 @@ function generate_bundled_module(input_file, root_path, basename, formats, plugi
         .rollup({
             input: input_file,
             external: [
-                'realityserver-client'
+                '@migenius/realityserver-client'
             ],
             plugins: [ ...pre_rollup_plugins, ...plugins, ...post_rollup_plugins ]
         })
@@ -47,7 +47,7 @@ function generate_bundled_module(input_file, root_path, basename, formats, plugi
                         file: path.join(root_path, format.format, basename),
                         sourcemap: true,
                         globals: {
-                            'realityserver-client': 'RS'
+                            '@migenius/realityserver-client': 'RS'
                         },
                         banner: '/******************************************************************************\n' +
                                 '* Copyright 2010-2019 migenius pty ltd, Australia. All rights reserved.\n' +

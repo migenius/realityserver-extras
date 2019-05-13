@@ -3,7 +3,7 @@
  *****************************************************************************/
 import { Transform } from './Transform';
 import { Transform_target } from './Transform_target';
-import { Utils } from 'realityserver-client';
+import { Utils } from '@migenius/realityserver-client';
 
 /**
  * The Camera class allows simple camera manipulation. Events are emitted whenever
