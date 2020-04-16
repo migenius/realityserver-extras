@@ -242,7 +242,7 @@ class Camera extends Utils.EventEmitter {
      */
     orbit(vertical_axis, horizontal_axis, orbit_point=null) {
         if (orbit_point) {
-            this.setTargetPoint(orbit_point, false);
+            this.set_target_point(orbit_point, false);
         }
         this.m_transform.orbit_around_target_point(horizontal_axis, vertical_axis, 0);
         if (orbit_point) {
