@@ -1,6 +1,6 @@
 {
   "name": "@migenius/realityserver-extras",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Classes to assist in the manipulation of RealityServer scene elements",
   "main": "lib/umd/realityserver-extras.js",
   "browser": "lib/umd/realityserver-extras.js",
