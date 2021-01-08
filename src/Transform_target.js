@@ -1,11 +1,11 @@
 /******************************************************************************
- * Copyright 2010-2019 migenius pty ltd, Australia. All rights reserved.
+ * Copyright 2010-2021 migenius pty ltd, Australia. All rights reserved.
  *****************************************************************************/
 import { Transform } from './Transform';
 import { Error as Rs_error, Vector3, Vector4 } from '@migenius/realityserver-client';
 
 /**
- * The Transform_target class adds look at funcitonality to the {@link RS.Transform}
+ * The Transform_target class adds look at functionality to the {@link RS.Transform}
  * class.
  * @memberof RS
  */
