@@ -1,7 +1,8 @@
 /******************************************************************************
- * Copyright 2010-2019 migenius pty ltd, Australia. All rights reserved.
+ * Copyright 2010-2021 migenius pty ltd, Australia. All rights reserved.
  *****************************************************************************/
 import { Vector3, Vector4, Matrix4x4 } from '@migenius/realityserver-client';
+import { Quaternion } from './Quaternion';
 
 
 const _X_AXIS = new Vector4(1, 0, 0, 0);
@@ -82,7 +83,7 @@ class Transform {
      * @return {RS.Transform}
      */
     clone() {
-        let transform = new Transform();
+        const transform = new Transform();
         this.populate_clone(transform);
 
         return transform;
@@ -220,6 +221,27 @@ class Transform {
     }
 
     /**
+     * The rotation component of this Transform
+     * @type {RS.Quaternion}
+     */
+    get rotation() {
+        // derive quaterion from axis
+        return new Quaternion(new Matrix4x4(
+            this.m_x_axis.x,this.m_y_axis.x,this.m_z_axis.x,0,
+            this.m_x_axis.y,this.m_y_axis.y,this.m_z_axis.y,0,
+            this.m_x_axis.z,this.m_y_axis.z,this.m_z_axis.z,0,
+            0, 0, 0, 1)).conjugate();
+    }
+
+    set rotation(value) {
+        // update axis from provided quaternion
+        this.m_x_axis = value.rotate_vector(Transform.X_AXIS.clone());
+        this.m_y_axis = value.rotate_vector(Transform.Y_AXIS.clone());
+        this.m_z_axis = value.rotate_vector(Transform.Z_AXIS.clone());
+        this.m_dirty_matrix = true;
+    }
+
+    /**
      * Translates the transform by the given amount in either world space or object space.
      * @param {Number} dx the amount to translate in X.
      * @param {Number} dy the amount to translate in Y.
@@ -285,7 +307,7 @@ class Transform {
     }
 
     /**
-     * The scaling value of this transform
+     * The scale component of this transform
      * @type {RS.Vector3}
      */
     get scale() {
