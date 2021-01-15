@@ -205,7 +205,7 @@ class Euler {
             m21 = m.xy, m22 = m.yy, m23 = m.zy,
             m31 = m.xz, m32 = m.yz, m33 = m.zz;
 
-        this.m_order = order || this.m_order;
+        order = order || this.m_order;
 
         switch ( order ) {
 
