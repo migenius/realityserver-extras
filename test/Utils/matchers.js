@@ -84,7 +84,16 @@ expect.extend({
         }
     },
     toBeQuaternion(received, expected) {
-        const pass = expected.equal(received, float_tolerance);
+        let pass = expected.equal(received, float_tolerance);
+        if (!pass) {
+            // negate one of the quaternions and test again since negated quaternions are rotationally equivalent.
+            const neg_received = received.clone();
+            neg_received.x *= -1;
+            neg_received.y *= -1;
+            neg_received.z *= -1;
+            neg_received.w *= -1;
+            pass = expected.equal(neg_received, float_tolerance);
+        }
         if (pass) {
             return {
                 message: () =>
