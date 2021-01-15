@@ -52,7 +52,6 @@ expect.extend({
                             message += `  ${prop} is ${received[prop]}, should be ${expected[prop]}\n`;
                         }
                     });
-                    console.log(message);
                     return message;
                 },
                 pass: false,
@@ -103,7 +102,6 @@ expect.extend({
                             message += `  ${prop} is ${received[prop]}, should be ${expected[prop]}\n`;
                         }
                     });
-                    console.log(message);
                     return message;
                 },
                 pass: false,
@@ -134,7 +132,6 @@ expect.extend({
                     } else if (received.order !== expected.order) {
                         message += `  order is ${received.order}, should be ${expected.order}\n`;
                     }
-                    //console.log(message);
                     return message;
                 },
                 pass: false,
