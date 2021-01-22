@@ -14,7 +14,23 @@ const _NEG_Y_AXIS = new Vector4( 0, -1, 0, 0);
 const _NEG_Z_AXIS = new Vector4( 0, 0, -1, 0);
 
 /**
- * The Transform class provides a more user friendly way of manipulating matrices
+ * The Transform class provides a more user friendly way of manipulating matrices.
+ * Typically this class would be initialized by setting the `world_to_obj` property
+ * with a matrix that has been retrieved from RealityServer. The `translation`,
+ * `rotation` and `scale` properties will then contain the object to world space
+ * geometric properties of that matrix. The transform can then be manipulated as 
+ * desired and the `world_to_obj` property then used to set the matrix of a
+ * RealityServer Instance.
+ * 
+ * <b>NB</b>: All properties return copies of the internal values. Editing the components
+ * of these properties directly will not modify the transform. You need to set values
+ * back onto the properties to effect changes.
+ * <pre><code>const t = new Transform();
+ * t.translation.x = 1.0; //< Incorrect
+ * const v = t.translation;
+ * v.x = 1.0;
+ * t.translation = v; //< Correct
+ * </code></pre>
  * @memberof RS
  */
 class Transform {
