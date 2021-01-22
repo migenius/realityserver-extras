@@ -1,6 +1,6 @@
 {
   "name": "@migenius/realityserver-extras",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Classes to assist in the manipulation of RealityServer scene elements",
   "main": "lib/umd/realityserver-extras.js",
   "browser": "lib/umd/realityserver-extras.js",
@@ -13,7 +13,8 @@
     "build": "node scripts/build.js",
     "build:doc": "jsdoc -c .jsdoc.conf.js",
     "eslint": "eslint src scripts test",
-    "test": "jest"
+    "test": "jest",
+    "build:publish": "bash scripts/publish.sh"
   },
   "repository": {
     "type": "git",
@@ -34,18 +35,17 @@
   },
   "homepage": "https://github.com/migenius/realityserver-extras#readme",
   "devDependencies": {
-    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-env": "^7.12.11",
     "@migenius/jsdoc-template": "^1.0.1",
-    "eslint": "^5.15.1",
+    "@rollup/plugin-commonjs": "^17.0.0",
+    "@rollup/plugin-node-resolve": "^11.0.1",
+    "eslint": "^5.16.0",
     "fs-extra": "^7.0.1",
-    "jest": "^24.7.1",
-    "jsdoc": "^3.6.3",
-    "rollup": "^1.9.0",
-    "rollup-plugin-cleanup": "^3.1.1",
-    "rollup-plugin-commonjs": "^9.2.1",
-    "rollup-plugin-filesize": "^6.0.1",
-    "rollup-plugin-node-resolve": "^4.0.1",
-    "rollup-plugin-terser": "^5.3.0"
+    "jest": "^24.9.0",
+    "jsdoc": "^3.6.6",
+    "rollup": "^2.36.1",
+    "rollup-plugin-filesize": "^6.2.1",
+    "rollup-plugin-terser": "^5.3.1"
   },
   "engines": {
     "node": ">=6.5"
@@ -54,6 +54,7 @@
     "lib"
   ],
   "dependencies": {
-    "@migenius/realityserver-client": "^1.0.3"
+    "@migenius/realityserver-client": "^1.0.7",
+    "rollup-plugin-cleanup": "^3.2.1"
   }
 }

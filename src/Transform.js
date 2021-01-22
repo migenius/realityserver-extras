@@ -1,7 +1,8 @@
 /******************************************************************************
- * Copyright 2010-2019 migenius pty ltd, Australia. All rights reserved.
+ * Copyright 2010-2021 migenius pty ltd, Australia. All rights reserved.
  *****************************************************************************/
 import { Vector3, Vector4, Matrix4x4 } from '@migenius/realityserver-client';
+import { Quaternion } from './Quaternion';
 
 
 const _X_AXIS = new Vector4(1, 0, 0, 0);
@@ -13,7 +14,23 @@ const _NEG_Y_AXIS = new Vector4( 0, -1, 0, 0);
 const _NEG_Z_AXIS = new Vector4( 0, 0, -1, 0);
 
 /**
- * The Transform class provides a more user friendly way of manipulating matrices
+ * The Transform class provides a more user friendly way of manipulating matrices.
+ * Typically this class would be initialized by setting the `world_to_obj` property
+ * with a matrix that has been retrieved from RealityServer. The `translation`,
+ * `rotation` and `scale` properties will then contain the object to world space
+ * geometric properties of that matrix. The transform can then be manipulated as
+ * desired and the `world_to_obj` property then used to set the matrix of a
+ * RealityServer Instance.
+ *
+ * <b>NB</b>: All properties return copies of the internal values. Editing the components
+ * of these properties directly will not modify the transform. You need to set values
+ * back onto the properties to effect changes.
+ * <pre><code>const t = new Transform();
+ * t.translation.x = 1.0; //< Incorrect
+ * const v = t.translation;
+ * v.x = 1.0;
+ * t.translation = v; //< Correct
+ * </code></pre>
  * @memberof RS
  */
 class Transform {
@@ -82,7 +99,7 @@ class Transform {
      * @return {RS.Transform}
      */
     clone() {
-        let transform = new Transform();
+        const transform = new Transform();
         this.populate_clone(transform);
 
         return transform;
@@ -220,6 +237,27 @@ class Transform {
     }
 
     /**
+     * The rotation component of this Transform
+     * @type {RS.Quaternion}
+     */
+    get rotation() {
+        // derive quaterion from axis
+        return new Quaternion(new Matrix4x4(
+            this.m_x_axis.x, this.m_y_axis.x, this.m_z_axis.x, 0,
+            this.m_x_axis.y, this.m_y_axis.y, this.m_z_axis.y, 0,
+            this.m_x_axis.z, this.m_y_axis.z, this.m_z_axis.z, 0,
+            0, 0, 0, 1)).conjugate();
+    }
+
+    set rotation(value) {
+        // update axis from provided quaternion
+        this.m_x_axis = value.rotate_vector(Transform.X_AXIS.clone());
+        this.m_y_axis = value.rotate_vector(Transform.Y_AXIS.clone());
+        this.m_z_axis = value.rotate_vector(Transform.Z_AXIS.clone());
+        this.m_dirty_matrix = true;
+    }
+
+    /**
      * Translates the transform by the given amount in either world space or object space.
      * @param {Number} dx the amount to translate in X.
      * @param {Number} dy the amount to translate in Y.
@@ -285,7 +323,7 @@ class Transform {
     }
 
     /**
-     * The scaling value of this transform
+     * The scale component of this transform
      * @type {RS.Vector3}
      */
     get scale() {

@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright 2010-2019 migenius pty ltd, Australia. All rights reserved.
+ * Copyright 2010-2021 migenius pty ltd, Australia. All rights reserved.
  *****************************************************************************/
 
 /**
@@ -9,3 +9,5 @@
 export { Camera as Camera } from './Camera';
 export { Transform as Transform } from './Transform';
 export { Transform_target as Transform_target } from './Transform_target';
+export { Quaternion as Quaternion } from './Quaternion';
+export { Euler as Euler } from './Euler';

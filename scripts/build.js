@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright 2010-2019 migenius pty ltd, Australia. All rights reserved.
+ * Copyright 2010-2021 migenius pty ltd, Australia. All rights reserved.
  *****************************************************************************/
 const rollup = require('rollup');
 const fs = require('fs-extra');
@@ -11,8 +11,8 @@ process.chdir(path.resolve(__dirname, '..'));
 fs.removeSync('./lib');
 
 const pre_rollup_plugins = [
-    require('rollup-plugin-node-resolve')(),
-    require('rollup-plugin-cleanup')()
+    require('@rollup/plugin-commonjs')(),
+    require('@rollup/plugin-node-resolve').nodeResolve
 ];
 
 const production_rollup_plugins = [
@@ -50,7 +50,7 @@ function generate_bundled_module(input_file, root_path, basename, formats, plugi
                             '@migenius/realityserver-client': 'RS'
                         },
                         banner: '/******************************************************************************\n' +
-                                '* Copyright 2010-2019 migenius pty ltd, Australia. All rights reserved.\n' +
+                                '* Copyright 2010-2021 migenius pty ltd, Australia. All rights reserved.\n' +
                                 '******************************************************************************/'
                     });
                 })

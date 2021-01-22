@@ -1,8 +1,10 @@
 /******************************************************************************
- * Copyright 2010-2019 migenius pty ltd, Australia. All rights reserved.
+ * Copyright 2010-2021 migenius pty ltd, Australia. All rights reserved.
  *****************************************************************************/
 import { Transform } from '../src/Transform';
 import { Vector3, Matrix4x4, Math as RS_math } from '@migenius/realityserver-client';
+import { Quaternion } from '../src/Quaternion';
+import { Euler } from '../src/Euler';
 
 test('default', () => {
     const transform = new Transform();
@@ -114,4 +116,45 @@ test('set rotate', () => {
         0.529919264233205, 0.6590571530492396, -0.533693959502232, 0,
         0, 0, 0, 1
     ));
+});
+
+test('quaternion', () => {
+    const e1 = new Vector3(RS_math.radians(23), RS_math.radians(18), RS_math.radians(-143));
+    let transform = new Transform();
+    let q = new Quaternion(new Euler(e1));
+    let transform2 = new Transform();
+    transform.rotation = q;
+    transform2.set_rotation(e1.x, e1.y, e1.z);
+    expect(transform.world_to_obj).toBeMatrix4x4(transform2.world_to_obj);
+    let q2 = transform.rotation;
+    expect(transform.world_to_obj).toBeMatrix4x4(new Matrix4x4(
+        -0.75954750597518172, 0.45754435455299386, -0.46232104622606757, -0,
+        -0.57236009937307408, -0.8078125490385939, 0.14086448190162718, -0,
+        -0.30901699437494751, 0.37160738586908265, 0.87545213915725884, 0,
+        0, 0, 0, 1));
+    expect(q2).toBeQuaternion(q);
+
+    // matrix from TRS
+    const t = new Vector3(4, -3, 12);
+    const r = new Quaternion(new Euler(RS_math.radians(98), RS_math.radians(-12), RS_math.radians((197))));
+    const s = new Vector3(4, 0.2, 8);
+    transform = new Transform();
+    transform.translation = t;
+    transform.rotation = r;
+    transform.scale = s;
+    expect(transform.world_to_obj).toBeMatrix4x4(new Matrix4x4(
+        -0.23385180065389269, 0.78100845934931484, -0.039649715626325979, -0,
+        -0.07149567037424942, 0.96643907049531419, 0.11731725994635984, 0,
+        0.051977922704439829, 4.843141677614331, -0.017016479348846449, 0,
+        0.097185119039544521, -58.342416757283289, 0.71474839453054073, 1));
+    // and the inverse operation
+    transform = new Transform();
+    transform.world_to_obj = new Matrix4x4(
+        -0.23385180065389269, 0.78100845934931484, -0.039649715626325979, -0,
+        -0.07149567037424942, 0.96643907049531419, 0.11731725994635984, 0,
+        0.051977922704439829, 4.843141677614331, -0.017016479348846449, 0,
+        0.097185119039544521, -58.342416757283289, 0.71474839453054073, 1);
+    expect(transform.translation).toBeVector3(t);
+    expect(transform.rotation).toBeQuaternion(r);
+    expect(transform.scale).toBeVector3(s);
 });
