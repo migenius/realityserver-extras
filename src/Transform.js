@@ -18,10 +18,10 @@ const _NEG_Z_AXIS = new Vector4( 0, 0, -1, 0);
  * Typically this class would be initialized by setting the `world_to_obj` property
  * with a matrix that has been retrieved from RealityServer. The `translation`,
  * `rotation` and `scale` properties will then contain the object to world space
- * geometric properties of that matrix. The transform can then be manipulated as 
+ * geometric properties of that matrix. The transform can then be manipulated as
  * desired and the `world_to_obj` property then used to set the matrix of a
  * RealityServer Instance.
- * 
+ *
  * <b>NB</b>: All properties return copies of the internal values. Editing the components
  * of these properties directly will not modify the transform. You need to set values
  * back onto the properties to effect changes.
@@ -243,9 +243,9 @@ class Transform {
     get rotation() {
         // derive quaterion from axis
         return new Quaternion(new Matrix4x4(
-            this.m_x_axis.x,this.m_y_axis.x,this.m_z_axis.x,0,
-            this.m_x_axis.y,this.m_y_axis.y,this.m_z_axis.y,0,
-            this.m_x_axis.z,this.m_y_axis.z,this.m_z_axis.z,0,
+            this.m_x_axis.x, this.m_y_axis.x, this.m_z_axis.x, 0,
+            this.m_x_axis.y, this.m_y_axis.y, this.m_z_axis.y, 0,
+            this.m_x_axis.z, this.m_y_axis.z, this.m_z_axis.z, 0,
             0, 0, 0, 1)).conjugate();
     }
 
