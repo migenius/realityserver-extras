@@ -13,7 +13,8 @@
     "build": "node scripts/build.js",
     "build:doc": "jsdoc -c .jsdoc.conf.js",
     "eslint": "eslint src scripts test",
-    "test": "jest"
+    "test": "jest",
+    "build:publish": "bash scripts/publish.sh"
   },
   "repository": {
     "type": "git",
