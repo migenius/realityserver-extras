@@ -13,7 +13,7 @@ For native browser usage download via CDN:
 ```
 or unminified
 ```html
-<script src='https://unpkg.com/@migenius/realityserver-extras/1.0.4/lib/umd/realityserver.js'></script> 
+<script src='https://unpkg.com/@migenius/realityserver-extras@1.0.4/lib/umd/realityserver-extras.js'></script> 
 ```
 Although for mission critical deployments it is recommended you serve the client API yourself. 
 
