@@ -74,9 +74,10 @@ class Transform_target extends Transform {
      * otherwise the transform's translation will be unaffected.
      * @param {RS.Vector3} point the point to look at.
      * @param {RS.Vector3} up the nominal up direction.
-     * @param {RS.Vector3=} location the transform location.
+     * @param {RS.Vector3} location the transform location.
+     * @access private
      */
-    look_at(point, up, location) {
+    _look_at_point(point, up, location) {
         if (location) {
             this.translation = location;
         }
@@ -90,7 +91,9 @@ class Transform_target extends Transform {
 
         this.m_x_axis = this.m_y_axis.cross(this.m_z_axis).normalize();
         this.m_y_axis = this.m_z_axis.cross(this.m_x_axis).normalize();
-        
+
+        //this.m_x_axis.scale(-1);//z scale out
+
         this.m_dirty_matrix = true;
     }
 
@@ -119,12 +122,12 @@ class Transform_target extends Transform {
      */
     look_at_target_point(reset_y_vector) {
         if (!!reset_y_vector) {
-            this.look_at(this.m_target_point, this.m_up_direction);
+            this._look_at_point(this.m_target_point, this.m_up_direction);
         } else {
             // get current roll angle
             const roll_angle = this._calculate_roll_angle();
 
-            this.look_at(this.m_target_point, this.m_up_direction);
+            this._look_at_point(this.m_target_point, this.m_up_direction);
             // Now that we are looking at the target point the up direction has be reset, now
             // we need to re-apply the roll to the transform.
             if (roll_angle !== 0) {
@@ -174,7 +177,7 @@ class Transform_target extends Transform {
         let to_target = this.m_follow_target_point ?
             this.m_target_point :
             this.z_axis.add(this.translation);
-        this.look_at(to_target, this.m_up_direction);
+        this._look_at_point(to_target, this.m_up_direction);
 
         // reapply the roll
         if (roll_angle !== 0) {
