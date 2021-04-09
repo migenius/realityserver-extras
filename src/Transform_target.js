@@ -461,10 +461,12 @@ class Transform_target extends Transform {
      * @param {Number} dx the X rotation in radians.
      * @param {Number} dy the Y rotation in radians.
      * @param {Number} dz the Z rotation in radians.
-     * @param {Boolean=} rotate_target_point if `true` then the target point is rotated by the same amount. Otherwise
+     * @param {Boolean=true} rotate_target_point if `true` then the target point is rotated by the same amount. Otherwise
      * we keep looking at the current target point.
+     * @param {Boolean=true} maintain_up if `true` then dy rotates around the nominal up direction so the rotation remains
+     * 'vertical'. If `false` then rotates around the transforms current Y axis.
      */
-    rotate_around_point(point, dx, dy, dz, rotate_target_point=true) {
+    rotate_around_point(point, dx, dy, dz, rotate_target_point=true, maintain_up=true) {
         if (rotate_target_point && point.equal_with_tolerance(this.m_target_point)) {
             rotate_target_point = false;
         }
@@ -481,7 +483,11 @@ class Transform_target extends Transform {
         }
 
         this._rotate_z_vectors(this.m_z_axis, -dz);
-        this._rotate_y_vectors(this.m_up_direction, dy, rotate);
+        if (maintain_up) {
+            this._rotate_y_vectors(this.m_up_direction, dy, rotate);
+        } else {
+            this._rotate_y_vectors(this.m_y_axis, dy, rotate);
+        }
         this._rotate_x_vectors(this.m_x_axis, dx, rotate);
 
         this.m_translation.set(point);
@@ -502,9 +508,11 @@ class Transform_target extends Transform {
      * @param {Number} dx the X rotation in radians.
      * @param {Number} dy the Y rotation in radians.
      * @param {Number} dz the Z rotation in radians.
+     * @param {Boolean=} maintain_up if `true` then dy rotates around the nominal up direction so the rotation remains
+     * 'vertical'. If `false` then rotates around the transforms current Y axis.
      */
-    orbit_around_target_point(dx, dy, dz) {
-        this.rotate_around_point(this.m_target_point, dx, dy, dz, false);
+    orbit_around_target_point(dx, dy, dz, maintain_up=true) {
+        this.rotate_around_point(this.m_target_point, dx, dy, dz, false, maintain_up);
     }
 }
 
