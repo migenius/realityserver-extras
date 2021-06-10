@@ -447,6 +447,8 @@
             
                 <li class="parent  " data-name="RS.Transform_target#clone"><a href="RS.Transform_target.html#clone">clone</a></li>
             
+                <li class="parent  " data-name="RS.Transform_target#look_at"><a href="RS.Transform_target.html#look_at">look_at</a></li>
+            
                 <li class="parent  " data-name="RS.Transform_target#orbit_around_target_point"><a href="RS.Transform_target.html#orbit_around_target_point">orbit_around_target_point</a></li>
             
                 <li class="parent  " data-name="RS.Transform_target#rotate"><a href="RS.Transform_target.html#rotate">rotate</a></li>
@@ -511,7 +513,7 @@ class.</p></div>
             <span class="">
                 new RS.Transform_target
             </span>
-            <span class="signature">()</span>
+            <span class="signature">(<span class="optional">location</span>, <span class="optional">target_point</span>, <span class="optional">up</span>, <span class="optional">nominal_up</span>)</span>
             
             
             
@@ -529,6 +531,13 @@ class.</p></div>
     <div class="description">
         <p>The default constructor initializes with an identity matrix looking at the point
 0, 0, -1.</p>
+<p>If location, target_point and up are provided then a look at is
+performed with those values. Note that the provided up direction will not be set as
+the nominal up direction.</p>
+<p>If an explicit nominal_up is passed this will be used as the nominal up direction.
+If this is done without look up parameters then the target point will be set
+to ensure that the up and look direction do not coincide.</p>
+<p>If called with only 1 argument then this is used as the nominal up.</p>
     </div>
     
 
@@ -536,6 +545,148 @@ class.</p></div>
     
     
     
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>location</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">RS.Vector3</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>the transform location.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>target_point</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">RS.Vector3</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>the point to look at.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>up</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">RS.Vector3</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>the up direction for the look at.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>nominal_up</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">RS.Vector3</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>the nominal up direction.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
     
     
     
@@ -572,6 +723,14 @@ class.</p></div>
     
     
     
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>const z_up_transform = new Transform_target(Transform.Z_AXIS);</code></pre>
+    
+
     
 </dd>
 
@@ -706,7 +865,7 @@ occur relative to the target point however the transform diretion will remain th
         <h4 class="name" id="up_direction">
             <a class="share-icon" href="#up_direction"><span class="glyphicon glyphicon-link"></span></a>
             <span class="">up_direction</span>
-            <span class="type-signature type">RS.Vector3</span>
+            <span class="type-signature type">RS.Vector4</span>
             
             
             
@@ -866,12 +1025,194 @@ transform will re-orient itself to the new up.</p>
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="look_at">
+            <a class="share-icon" href="#look_at"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                look_at
+            </span>
+            <span class="signature">(location, target_point, <span class="optional">up</span>)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Makes the transform look at the given point from the given location using the optional
+given up vector. If up is not provided then the nominal up direction is used. If it is
+provided it does not change the internal nominal up direction.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>location</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">RS.Vector3</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>the location.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>target_point</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">RS.Vector3</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>the point to look at.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>up</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">RS.Vector3</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>the up direction.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="orbit_around_target_point">
             <a class="share-icon" href="#orbit_around_target_point"><span class="glyphicon glyphicon-link"></span></a>
             <span class="">
                 orbit_around_target_point
             </span>
-            <span class="signature">(dx, dy, dz)</span>
+            <span class="signature">(dx, dy, dz, <span class="optional">maintain_up</span>)</span>
             
             
             
@@ -908,6 +1249,8 @@ transform will re-orient itself to the new up.</p>
 		<th>Type</th>
 		
 		
+		<th>Default</th>
+		
 		
 		<th class="last">Description</th>
 	</tr>
@@ -931,8 +1274,17 @@ transform will re-orient itself to the new up.</p>
             </td>
             
             
+                <td class="default">
+                
+                </td>
+            
             
             <td class="description last">
+                
+                    
+                    
+                        
+                    
                 
                 <p>the X rotation in radians.</p></td>
         </tr>
@@ -954,8 +1306,17 @@ transform will re-orient itself to the new up.</p>
             </td>
             
             
+                <td class="default">
+                
+                </td>
+            
             
             <td class="description last">
+                
+                    
+                    
+                        
+                    
                 
                 <p>the Y rotation in radians.</p></td>
         </tr>
@@ -977,10 +1338,56 @@ transform will re-orient itself to the new up.</p>
             </td>
             
             
+                <td class="default">
+                
+                </td>
+            
             
             <td class="description last">
                 
+                    
+                    
+                        
+                    
+                
                 <p>the Z rotation in radians.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>maintain_up</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>if <code>true</code> then dy rotates around the nominal up direction so the rotation remains
+'vertical'. If <code>false</code> then rotates around the transforms current Y axis.</p></td>
         </tr>
 	
 	
@@ -1501,7 +1908,7 @@ we keep looking at the current target point.</p></td>
             <span class="">
                 rotate_around_point
             </span>
-            <span class="signature">(point, dx, dy, dz, <span class="optional">rotate_target_point</span>)</span>
+            <span class="signature">(point, dx, dy, dz, <span class="optional">rotate_target_point</span>, <span class="optional">maintain_up</span>)</span>
             
             
             
@@ -1711,6 +2118,43 @@ around the point.</p>
                 
                 <p>if <code>true</code> then the target point is rotated by the same amount. Otherwise
 we keep looking at the current target point.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>maintain_up</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>if <code>true</code> then dy rotates around the nominal up direction so the rotation remains
+'vertical'. If <code>false</code> then rotates around the transforms current Y axis.</p></td>
         </tr>
 	
 	
@@ -3096,7 +3540,7 @@ Resulting target point CANNOT be the same as translation vector.</p>
 
         <footer class="content-size">
             <div class="footer">
-                Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Fri Jan 22 2021 15:28:22 GMT+1100 (Australian Eastern Daylight Time)
+                Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Thu Jun 10 2021 12:07:29 GMT+1000 (Australian Eastern Standard Time)
             </div>
         </footer>
     </div>
