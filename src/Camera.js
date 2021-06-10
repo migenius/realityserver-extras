@@ -237,7 +237,7 @@ class Camera extends Utils.EventEmitter {
      * @param {Number} horizontal_axis The amount to orbit aroung the right vector in radians.
      * @param {RS.Vector3=} orbit_point The point to orbit around, if provided then this becomes
      * the new target point.
-     * @param {Boolean=true} level_camera if `true` then orbit around the nominal up direction so the camera remains
+     * @param {Boolean=} level_camera if `true` then orbit around the nominal up direction so the camera remains
      * level. If `false` then rotates around the cameras current Y axis.
      * @fires RS.Camera#target_point-changed
      * @fires RS.Camera#transform-changed
@@ -258,11 +258,11 @@ class Camera extends Utils.EventEmitter {
      * however if you choose to orbit around a different point than the target point you can also rotate the
      * target point as well.
      *
-     * @param {RS.Vector3> point The point to orbit around, this will NOT change the target point.
+     * @param {RS.Vector3} point The point to orbit around, this will NOT change the target point.
      * @param {Number} vertical_axis The amount to rotate around the up vector in radians.
      * @param {Number} horizontal_axis The amount to rorate aroung the right vector in radians.
-     * @param {Boolean=false} shift_target_point If true the target point will also rotate around the point.
-     * @param {Boolean=true} level_camera if `true` then orbit around the nominal up direction so the camera remains
+     * @param {Boolean=} shift_target_point If `true` the target point will also rotate around the point.
+     * @param {Boolean=} level_camera if `true` then orbit around the nominal up direction so the camera remains
      * level. If `false` then rotates around the cameras current Y axis.
      * @fires RS.Camera#target_point-changed
      * @fires RS.Camera#transform-changed

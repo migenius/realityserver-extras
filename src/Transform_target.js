@@ -461,9 +461,9 @@ class Transform_target extends Transform {
      * @param {Number} dx the X rotation in radians.
      * @param {Number} dy the Y rotation in radians.
      * @param {Number} dz the Z rotation in radians.
-     * @param {Boolean=true} rotate_target_point if `true` then the target point is rotated by the same amount. Otherwise
+     * @param {Boolean=} rotate_target_point if `true` then the target point is rotated by the same amount. Otherwise
      * we keep looking at the current target point.
-     * @param {Boolean=true} maintain_up if `true` then dy rotates around the nominal up direction so the rotation remains
+     * @param {Boolean=} maintain_up if `true` then dy rotates around the nominal up direction so the rotation remains
      * 'vertical'. If `false` then rotates around the transforms current Y axis.
      */
     rotate_around_point(point, dx, dy, dz, rotate_target_point=true, maintain_up=true) {
