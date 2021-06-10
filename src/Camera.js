@@ -237,14 +237,16 @@ class Camera extends Utils.EventEmitter {
      * @param {Number} horizontal_axis The amount to orbit aroung the right vector in radians.
      * @param {RS.Vector3=} orbit_point The point to orbit around, if provided then this becomes
      * the new target point.
+     * @param {Boolean=} level_camera if `true` then orbit around the nominal up direction so the camera remains
+     * level. If `false` then rotates around the cameras current Y axis.
      * @fires RS.Camera#target_point-changed
      * @fires RS.Camera#transform-changed
      */
-    orbit(vertical_axis, horizontal_axis, orbit_point=null) {
+    orbit(vertical_axis, horizontal_axis, orbit_point=null, level_camera=true) {
         if (orbit_point) {
             this.set_target_point(orbit_point, false);
         }
-        this.m_transform.orbit_around_target_point(horizontal_axis, vertical_axis, 0);
+        this.m_transform.orbit_around_target_point(horizontal_axis, vertical_axis, 0, level_camera);
         if (orbit_point) {
             this.changed('target_point');
         }
@@ -256,15 +258,17 @@ class Camera extends Utils.EventEmitter {
      * however if you choose to orbit around a different point than the target point you can also rotate the
      * target point as well.
      *
-     * @param {RS.Vector3> point The point to orbit around, this will NOT change the target point.
+     * @param {RS.Vector3} point The point to orbit around, this will NOT change the target point.
      * @param {Number} vertical_axis The amount to rotate around the up vector in radians.
      * @param {Number} horizontal_axis The amount to rorate aroung the right vector in radians.
-     * @param {Boolean=} shift_target_point If true the target point will also rotate around the point.
+     * @param {Boolean=} shift_target_point If `true` the target point will also rotate around the point.
+     * @param {Boolean=} level_camera if `true` then orbit around the nominal up direction so the camera remains
+     * level. If `false` then rotates around the cameras current Y axis.
      * @fires RS.Camera#target_point-changed
      * @fires RS.Camera#transform-changed
      */
-    orbit_around_point(point, vertical_axis, horizontal_axis, shift_target_point=false) {
-        this.m_transform.rotate_around_point(point, horizontal_axis, vertical_axis, 0, shift_target_point);
+    orbit_around_point(point, vertical_axis, horizontal_axis, shift_target_point=false, level_camera=true) {
+        this.m_transform.rotate_around_point(point, horizontal_axis, vertical_axis, 0, shift_target_point, level_camera);
         if (shift_target_point) {
             this.changed('target_point');
         }

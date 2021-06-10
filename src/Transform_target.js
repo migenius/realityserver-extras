@@ -13,18 +13,53 @@ class Transform_target extends Transform {
     /**
      * The default constructor initializes with an identity matrix looking at the point
      * 0, 0, -1.
+     * 
+     * If location, target_point and up are provided then a look at is
+     * performed with those values. Note that the provided up direction will not be set as
+     * the nominal up direction.
+     * 
+     * If an explicit nominal_up is passed this will be used as the nominal up direction.
+     * If this is done without look up parameters then the target point will be set
+     * to ensure that the up and look direction do not coincide.
+     * 
+     * If called with only 1 argument then this is used as the nominal up.
+     * 
+     * @example
+     * const z_up_transform = new Transform_target(Transform.Z_AXIS);
+     * 
+     * @param {RS.Vector3=} location the transform location.
+     * @param {RS.Vector3=} target_point the point to look at.
+     * @param {RS.Vector3=} up the up direction for the look at.
+     * @param {RS.Vector3=} nominal_up the nominal up direction.
      */
-    constructor() {
+    constructor(location, target_point, up, nominal_up) {
         super();
 
         this.m_follow_target_point = true;
 
-        // Default to Y up scenes.
-        this.m_up_direction = Transform.Y_AXIS.clone();
+        if (arguments.length === 1) {
+            nominal_up = location;
+            location = undefined;
+        }
+        if (nominal_up) {
+            this.m_up_direction = new Vector4(nominal_up);
+            if (this.m_up_direction.equal_with_tolerance(Transform.Z_AXIS) ||
+                    this.m_up_direction.equal_with_tolerance(Transform.NEG_Z_AXIS)) {
+                this.m_target_point = new Vector4(0, 1, 0);
+            } else {
+                this.m_target_point = new Vector4(0, 0, -1);                
+            }
+        } else {
+            // Default to Y up scenes.
+            this.m_up_direction = Transform.Y_AXIS.clone();
+            this.m_target_point = new Vector4(0, 0, -1);
+        }
 
-        // So the target point is not the same as the translation.
-        this.m_target_point = new Vector4(0, 0, -1);
-        // this.m_z_axis.z = -1; //z scale out
+        if (location && target_point && up) {
+            this.look_at(location, target_point, up);
+        } else {
+            this.look_at(new Vector4(0,0,0), this.m_target_point, this.m_up_direction);
+        }
     }
 
     /*
@@ -69,6 +104,21 @@ class Transform_target extends Transform {
     }
 
     /**
+     * Makes the transform look at the given point from the given location using the optional
+     * given up vector. If up is not provided then the nominal up direction is used. If it is
+     * provided it does not change the internal nominal up direction.
+     * @param {RS.Vector3} location the location.
+     * @param {RS.Vector3} target_point the point to look at.
+     * @param {RS.Vector3=} up the up direction.
+     */
+    look_at(location, target_point, up) {
+        this.m_translation.set(location);
+        this.m_target_point.set(target_point);
+
+        this._look_at_point(target_point, up || this.m_up_direction);
+    }
+
+    /**
      * Makes the transform look at the given point using the given up vector.
      * If a location vector is given then the transform is moved to that location first,
      * otherwise the transform's translation will be unaffected.
@@ -85,14 +135,11 @@ class Transform_target extends Transform {
         this.m_y_axis.set(up);
         this.m_y_axis.normalize();
 
-        // const to_point = point.clone().subtract(this.m_translation).normalize(); //z scale out
-        const to_point = this.translation.subtract(point).normalize();//z scale in
+        const to_point = this.translation.subtract(point).normalize();
         this.m_z_axis.set(to_point);
 
         this.m_x_axis = this.m_y_axis.cross(this.m_z_axis).normalize();
         this.m_y_axis = this.m_z_axis.cross(this.m_x_axis).normalize();
-
-        //this.m_x_axis.scale(-1);//z scale out
 
         this.m_dirty_matrix = true;
     }
@@ -160,7 +207,7 @@ class Transform_target extends Transform {
      * will attempt to keep it's Y axis aligned with this direction. When set the
      * transform will re-orient itself to the new up.
      * @default {x: 0, y: 1, z: 0}
-     * @type {RS.Vector3}
+     * @type {RS.Vector4}
      */
     get up_direction() {
         return this.m_up_direction.clone();
@@ -364,8 +411,7 @@ class Transform_target extends Transform {
             this.m_x_axis.set(Transform.X_AXIS);
             this.m_y_axis.set(Transform.Y_AXIS);
         }
-        //this.m_z_axis.set(Transform.NEG_Z_AXIS);//z scale out
-        this.m_z_axis.set(Transform.Z_AXIS);//z scale in
+        this.m_z_axis.set(Transform.Z_AXIS);
 
         this.rotate(x, y, z, rotate_target_point);
     }
@@ -402,8 +448,7 @@ class Transform_target extends Transform {
     set_rotation_around_axis(axis, angle, rotate_target_point=true) {
         this.m_x_axis.set(Transform.X_AXIS);
         this.m_y_axis.set(Transform.Y_AXIS);
-        //this.m_z_axis.set(Transform.NEG_Z_AXIS);//z scale out
-        this.m_z_axis.set(Transform.Z_AXIS);//z scale in
+        this.m_z_axis.set(Transform.Z_AXIS);
 
         this.rotate_around_axis(axis, angle, false, rotate_target_point);
     }
@@ -418,8 +463,10 @@ class Transform_target extends Transform {
      * @param {Number} dz the Z rotation in radians.
      * @param {Boolean=} rotate_target_point if `true` then the target point is rotated by the same amount. Otherwise
      * we keep looking at the current target point.
+     * @param {Boolean=} maintain_up if `true` then dy rotates around the nominal up direction so the rotation remains
+     * 'vertical'. If `false` then rotates around the transforms current Y axis.
      */
-    rotate_around_point(point, dx, dy, dz, rotate_target_point=true) {
+    rotate_around_point(point, dx, dy, dz, rotate_target_point=true, maintain_up=true) {
         if (rotate_target_point && point.equal_with_tolerance(this.m_target_point)) {
             rotate_target_point = false;
         }
@@ -436,7 +483,11 @@ class Transform_target extends Transform {
         }
 
         this._rotate_z_vectors(this.m_z_axis, -dz);
-        this._rotate_y_vectors(this.m_up_direction, dy, rotate);
+        if (maintain_up) {
+            this._rotate_y_vectors(this.m_up_direction, dy, rotate);
+        } else {
+            this._rotate_y_vectors(this.m_y_axis, dy, rotate);
+        }
         this._rotate_x_vectors(this.m_x_axis, dx, rotate);
 
         this.m_translation.set(point);
@@ -457,9 +508,11 @@ class Transform_target extends Transform {
      * @param {Number} dx the X rotation in radians.
      * @param {Number} dy the Y rotation in radians.
      * @param {Number} dz the Z rotation in radians.
+     * @param {Boolean=} maintain_up if `true` then dy rotates around the nominal up direction so the rotation remains
+     * 'vertical'. If `false` then rotates around the transforms current Y axis.
      */
-    orbit_around_target_point(dx, dy, dz) {
-        this.rotate_around_point(this.m_target_point, dx, dy, dz, false);
+    orbit_around_target_point(dx, dy, dz, maintain_up=true) {
+        this.rotate_around_point(this.m_target_point, dx, dy, dz, false, maintain_up);
     }
 }
 

@@ -1,7 +1,8 @@
 /******************************************************************************
- * Copyright 2010-2019 migenius pty ltd, Australia. All rights reserved.
+ * Copyright 2010-2021 migenius pty ltd, Australia. All rights reserved.
  *****************************************************************************/
 import { Transform_target } from '../src/Transform_target';
+import { Transform } from '../src/Transform';
 import { Vector3, Matrix4x4 } from '@migenius/realityserver-client';
 
 test('default', () => {
@@ -32,6 +33,39 @@ test('default', () => {
     expect(transform.follow_target_point).toBe(true);
 });
 
+
+test('z up', () => {
+    const transform = new Transform_target(Transform.Z_AXIS);
+    const z_up_matrix = new Matrix4x4(
+        1, 0, 0, 0,
+        0, 0, -1, 0,
+        0, 1, 0, 0,
+        0, 0 ,0, 1
+    );
+
+    expect(transform.world_to_obj).toBeMatrix4x4(z_up_matrix);
+    expect(transform.x_axis).toBeVector3(new Vector3(1, 0, 0));
+    expect(transform.y_axis).toBeVector3(new Vector3(0, 0, 1));
+    expect(transform.z_axis).toBeVector3(new Vector3(0, -1, 0));
+    expect(transform.translation).toBeVector3(new Vector3(0, 0, 0));
+    expect(transform.scale).toBeVector3(new Vector3(1, 1, 1));
+    expect(transform.up_direction).toBeVector3(new Vector3(0, 0, 1));
+    expect(transform.target_point).toBeVector3(new Vector3(0, 1, 0));
+    expect(transform.follow_target_point).toBe(true);
+
+    // should be the same
+    transform.target_point = new Vector3(0, 1, 0);
+
+    expect(transform.world_to_obj).toBeMatrix4x4(z_up_matrix);
+    expect(transform.x_axis).toBeVector3(new Vector3(1, 0, 0));
+    expect(transform.y_axis).toBeVector3(new Vector3(0, 0, 1));
+    expect(transform.z_axis).toBeVector3(new Vector3(0, -1, 0));
+    expect(transform.translation).toBeVector3(new Vector3(0, 0, 0));
+    expect(transform.scale).toBeVector3(new Vector3(1, 1, 1));
+    expect(transform.up_direction).toBeVector3(new Vector3(0, 0, 1));
+    expect(transform.target_point).toBeVector3(new Vector3(0, 1, 0));
+    expect(transform.follow_target_point).toBe(true);
+});
 
 test('set target', () => {
     const transform = new Transform_target();

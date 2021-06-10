@@ -410,7 +410,7 @@ class Transform {
         const rotate = [ to_point ];
 
         this._rotate_z_vectors(this.m_z_axis, dz);
-        this._rotate_y_vectors(this.m_up_direction, dy, rotate);
+        this._rotate_y_vectors(this.m_y_axis, dy, rotate);
         this._rotate_x_vectors(this.m_x_axis, dx, rotate);
 
         this.m_translation.set(point);
