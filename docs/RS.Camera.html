@@ -447,6 +447,8 @@
             
                 <li class="parent  " data-name="RS.Transform_target#clone"><a href="RS.Transform_target.html#clone">clone</a></li>
             
+                <li class="parent  " data-name="RS.Transform_target#look_at"><a href="RS.Transform_target.html#look_at">look_at</a></li>
+            
                 <li class="parent  " data-name="RS.Transform_target#orbit_around_target_point"><a href="RS.Transform_target.html#orbit_around_target_point">orbit_around_target_point</a></li>
             
                 <li class="parent  " data-name="RS.Transform_target#rotate"><a href="RS.Transform_target.html#rotate">rotate</a></li>
@@ -2085,7 +2087,7 @@ field of view and matrix are the same.</p>
             <span class="">
                 orbit
             </span>
-            <span class="signature">(vertical_axis, horizontal_axis, <span class="optional">orbit_point</span>)</span>
+            <span class="signature">(vertical_axis, horizontal_axis, <span class="optional">orbit_point</span>, <span class="optional">level_camera</span>)</span>
             
             
             
@@ -2232,6 +2234,43 @@ the new target point.</p></td>
         </tr>
 	
 	
+	
+        <tr>
+            
+                <td class="name"><code>level_camera</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>if <code>true</code> then orbit around the nominal up direction so the camera remains
+level. If <code>false</code> then rotates around the cameras current Y axis.</p></td>
+        </tr>
+	
+	
 	</tbody>
 </table>
     
@@ -2289,7 +2328,7 @@ the new target point.</p></td>
             <span class="">
                 orbit_around_point
             </span>
-            <span class="signature">(vertical_axis, horizontal_axis, <span class="optional">shift_target_point</span>)</span>
+            <span class="signature">(point, vertical_axis, horizontal_axis, <span class="optional">shift_target_point</span>, <span class="optional">level_camera</span>)</span>
             
             
             
@@ -2328,6 +2367,8 @@ target point as well.</p>
 		<th>Type</th>
 		
 		
+		<th>Default</th>
+		
 		
 		<th class="last">Description</th>
 	</tr>
@@ -2338,13 +2379,22 @@ target point as well.</p>
 	
         <tr>
             
-                <td class="name"><code>{RS.Vector3></code></td>
+                <td class="name"><code>point</code></td>
             
             
             <td class="type">
             
+                
+<span class="param-type">RS.Vector3</span>
+
+
+            
             </td>
             
+            
+                <td class="default">
+                
+                </td>
             
             
             <td class="description last">
@@ -2354,7 +2404,7 @@ target point as well.</p>
                         
                     
                 
-                <p>point The point to orbit around, this will NOT change the target point.</p></td>
+                <p>The point to orbit around, this will NOT change the target point.</p></td>
         </tr>
 	
 	
@@ -2373,6 +2423,10 @@ target point as well.</p>
             
             </td>
             
+            
+                <td class="default">
+                
+                </td>
             
             
             <td class="description last">
@@ -2402,6 +2456,10 @@ target point as well.</p>
             </td>
             
             
+                <td class="default">
+                
+                </td>
+            
             
             <td class="description last">
                 
@@ -2430,6 +2488,12 @@ target point as well.</p>
             </td>
             
             
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
             
             <td class="description last">
                 
@@ -2440,7 +2504,44 @@ target point as well.</p>
                         
                     
                 
-                <p>If true the target point will also rotate around the point.</p></td>
+                <p>If <code>true</code> the target point will also rotate around the point.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>level_camera</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>if <code>true</code> then orbit around the nominal up direction so the camera remains
+level. If <code>false</code> then rotates around the cameras current Y axis.</p></td>
         </tr>
 	
 	
@@ -5235,7 +5336,7 @@ otherwise the camera will look at the old target point after translation.</p></t
 
         <footer class="content-size">
             <div class="footer">
-                Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Fri Jan 22 2021 15:28:22 GMT+1100 (Australian Eastern Daylight Time)
+                Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Thu Jun 10 2021 12:07:29 GMT+1000 (Australian Eastern Standard Time)
             </div>
         </footer>
     </div>
