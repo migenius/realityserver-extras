@@ -80,6 +80,7 @@ test('set translation', () => {
         2.3, -5.4, -103.4, 1
     ));
 });
+
 test('set scale', () => {
     const transform = new Transform();
     const scale = new Vector3(-2.3, 5.4, 103.4);
@@ -92,8 +93,50 @@ test('set scale', () => {
         0, 0, 1/103.4, 0,
         0, 0, 0, 1
     ));
+
+    const new_scale = transform.scale.clone();
+    expect(transform.scale).toBeVector3(new_scale);
+    new_scale['x'] = new_scale['x'] * -1;
+    transform.scale = new_scale; 
+
+    expect(transform.scale).toBeVector3(new_scale);
+    expect(transform.world_to_obj).toBeMatrix4x4(new Matrix4x4(
+        1/2.3, 0, 0, 0,
+        0, 1/5.4, 0, 0,
+        0, 0, 1/103.4, 0,
+        0, 0, 0, 1
+    ));
+    
 });
 
+test('set mirror scale', () => {
+    const transform = new Transform();
+    const scale = transform.scale.clone();
+    scale.x = -1;
+    transform.scale = scale;
+
+    expect(transform.scale).toBeVector3(scale);
+    expect(transform.world_to_obj).toBeMatrix4x4(new Matrix4x4(
+        -1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1
+    ));
+});
+
+test('set unit scale', () => {
+    const transform = new Transform();
+    const scale = new Vector3(1, 1, 1);
+    transform.scale = scale;
+
+    expect(transform.scale).toBeVector3(scale);
+    expect(transform.world_to_obj).toBeMatrix4x4(new Matrix4x4(
+        1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1
+    ));
+});
 
 test('set rotate', () => {
     const transform = new Transform();
