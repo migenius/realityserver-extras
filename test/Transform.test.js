@@ -97,7 +97,7 @@ test('set scale', () => {
     const new_scale = transform.scale.clone();
     expect(transform.scale).toBeVector3(new_scale);
     new_scale['x'] = new_scale['x'] * -1;
-    transform.scale = new_scale; 
+    transform.scale = new_scale;
 
     expect(transform.scale).toBeVector3(new_scale);
     expect(transform.world_to_obj).toBeMatrix4x4(new Matrix4x4(
@@ -106,7 +106,7 @@ test('set scale', () => {
         0, 0, 1/103.4, 0,
         0, 0, 0, 1
     ));
-    
+
 });
 
 test('set mirror scale', () => {

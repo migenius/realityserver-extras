@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright 2010-2019 migenius pty ltd, Australia. All rights reserved.
+ * Copyright 2010-2020 migenius pty ltd, Australia. All rights reserved.
  *****************************************************************************/
 import { Transform } from './Transform';
 import { Transform_target } from './Transform_target';
@@ -21,7 +21,7 @@ class Camera extends Utils.EventEmitter {
     }
 
     /**
-     * Enum representing a Y up camera
+     * Enum representing a Z up camera
      */
     static get Z_UP() {
         return 1;

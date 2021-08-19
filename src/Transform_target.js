@@ -13,20 +13,20 @@ class Transform_target extends Transform {
     /**
      * The default constructor initializes with an identity matrix looking at the point
      * 0, 0, -1.
-     * 
+     *
      * If location, target_point and up are provided then a look at is
      * performed with those values. Note that the provided up direction will not be set as
      * the nominal up direction.
-     * 
+     *
      * If an explicit nominal_up is passed this will be used as the nominal up direction.
      * If this is done without look up parameters then the target point will be set
      * to ensure that the up and look direction do not coincide.
-     * 
+     *
      * If called with only 1 argument then this is used as the nominal up.
-     * 
+     *
      * @example
      * const z_up_transform = new Transform_target(Transform.Z_AXIS);
-     * 
+     *
      * @param {RS.Vector3=} location the transform location.
      * @param {RS.Vector3=} target_point the point to look at.
      * @param {RS.Vector3=} up the up direction for the look at.
@@ -47,7 +47,7 @@ class Transform_target extends Transform {
                     this.m_up_direction.equal_with_tolerance(Transform.NEG_Z_AXIS)) {
                 this.m_target_point = new Vector4(0, 1, 0);
             } else {
-                this.m_target_point = new Vector4(0, 0, -1);                
+                this.m_target_point = new Vector4(0, 0, -1);
             }
         } else {
             // Default to Y up scenes.
@@ -58,7 +58,7 @@ class Transform_target extends Transform {
         if (location && target_point && up) {
             this.look_at(location, target_point, up);
         } else {
-            this.look_at(new Vector4(0,0,0), this.m_target_point, this.m_up_direction);
+            this.look_at(new Vector4(0, 0, 0), this.m_target_point, this.m_up_direction);
         }
     }
 
