@@ -40,7 +40,7 @@ test('z up', () => {
         1, 0, 0, 0,
         0, 0, -1, 0,
         0, 1, 0, 0,
-        0, 0 ,0, 1
+        0, 0, 0, 1
     );
 
     expect(transform.world_to_obj).toBeMatrix4x4(z_up_matrix);
