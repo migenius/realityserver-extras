@@ -54,7 +54,7 @@
     "lib"
   ],
   "dependencies": {
-    "@migenius/realityserver-client": "^1.0.8",
+    "@migenius/realityserver-client": "^1.0.9",
     "rollup-plugin-cleanup": "^3.2.1"
   }
 }
