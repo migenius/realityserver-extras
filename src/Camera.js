@@ -268,7 +268,8 @@ class Camera extends Utils.EventEmitter {
      * @fires RS.Camera#transform-changed
      */
     orbit_around_point(point, vertical_axis, horizontal_axis, shift_target_point=false, level_camera=true) {
-        this.m_transform.rotate_around_point(point, horizontal_axis, vertical_axis, 0, shift_target_point, level_camera);
+        this.m_transform.rotate_around_point(point, horizontal_axis, vertical_axis, 0,
+            shift_target_point, level_camera);
         if (shift_target_point) {
             this.changed('target_point');
         }
@@ -380,43 +381,61 @@ class Camera extends Utils.EventEmitter {
     }
 
     /**
-     * Transforms a point into camera space.
+     * Transforms a world space point into camera space.
      *
-     * @param point {RS.Vector4} The point to tranform.
+     * @param point {RS.Vector4} The point to transform.
      * @param result {RS.Vector4} Receives the result of the transform.
+     * @return {RS.Vector4} The transformed point
      */
     transform_point(point, result) {
         const world_to_cam = this.transform.world_to_obj;
         result.set(point);
         result.transform(world_to_cam);
-        return true;
+        return result;
     }
 
     /**
-     * Transforms a direction into camera space.
+     * Transforms a camera space point into world space.
      *
-     * @param point {RS.Vector4} The point to tranform.
+     * @param point {RS.Vector4} The point to transform.
      * @param result {RS.Vector4} Receives the result of the transform.
+     * @return {RS.Vector4} The transformed point
+     */
+    transform_point_to_world(point, result) {
+        const cam_to_world = this.transform.world_to_obj;
+        cam_to_world.invert();
+        result.set(point);
+        result.transform(cam_to_world);
+        return result;
+    }
+
+    /**
+     * Transforms a world space direction into camera space.
+     *
+     * @param point {RS.Vector4} The point to transform.
+     * @param result {RS.Vector4} Receives the result of the transform.
+     * @return {RS.Vector4} The transformed direction
      */
     transform_direction(direction, result) {
         const world_to_cam = this.transform.world_to_obj;
         const my_dir = direction.clone();
         result.set(my_dir.rotate(world_to_cam));
-        return true;
+        return result;
     }
 
     /**
-     * Transforms a direction from camera space into world space.
+     * Transforms a camera space direction into world space.
      *
-     * @param point {RS.Vector4} The point to tranform.
+     * @param direction {RS.Vector4} The direction to transform.
      * @param result {RS.Vector4} Receives the result of the transform.
+     * @return {RS.Vector4} The transformed direction
      */
     transform_direction_to_world(direction, result) {
-        let cam_to_world = this.transform.world_to_obj;
-        let my_dir = direction.clone();
+        const cam_to_world = this.transform.world_to_obj;
         cam_to_world.invert();
+        const my_dir = direction.clone();
         result.set(my_dir.rotate(cam_to_world));
-        return true;
+        return result;
     }
 
     /**
@@ -641,6 +660,18 @@ class Camera extends Utils.EventEmitter {
         if (this.follow_target_point) {
             this.changed('transform');
         }
+    }
+
+    /**
+     * Makes the camera look at the current target point whether it is following
+     * it or not.
+     *
+     * @param {Boolean=} reset_up_vector if `true` then the camera roll will be reset.
+     * @fires RS.Camera#transform-changed
+     */
+    look_at_target_point(reset_up_vector=true) {
+        this.m_transform.look_at_target_point(reset_up_vector);
+        this.changed('transform');
     }
 
     /**
