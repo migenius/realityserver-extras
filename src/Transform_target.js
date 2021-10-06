@@ -163,11 +163,10 @@ class Transform_target extends Transform {
 
     /**
      * Rotate the transform to look at the target point.
-     * @param {Boolean} reset_y_vector if `true` then the transform will reset to be oriented
+     * @param {Boolean=} reset_y_vector if `true` then the transform will reset to be oriented
      * up. Otherwise the current roll will be preserved.
-     * @access private
      */
-    look_at_target_point(reset_y_vector) {
+    look_at_target_point(reset_y_vector=false) {
         if (!!reset_y_vector) {
             this._look_at_point(this.m_target_point, this.m_up_direction);
         } else {
@@ -235,7 +234,7 @@ class Transform_target extends Transform {
     /**
      * Whether the target point should be followed. If `true` then the transform
      * will be locked to looking at the target point. If not then operations will still
-     * occur relative to the target point however the transform diretion will remain the same.
+     * occur relative to the target point however the transform direction will remain the same.
      * @default true
      * @type {Boolean}
      */
