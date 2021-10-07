@@ -143,6 +143,13 @@ class Camera extends Utils.EventEmitter {
                 }
 
                 if (camera.transform !== undefined) {
+                    if (camera.transform instanceof Transform_target) {
+                        this.transform = camera.transform.clone();
+                    } else {
+                        this.matrix = camera.transform;
+                    }
+                }
+                if (camera.matrix !== undefined) {
                     this.matrix = camera.matrix;
                 }
 
@@ -435,6 +442,52 @@ class Camera extends Utils.EventEmitter {
         cam_to_world.invert();
         const my_dir = direction.clone();
         result.set(my_dir.rotate(cam_to_world));
+        return result;
+    }
+
+
+    /**
+     * Projects a world space point into the camera focal plane. The X and Y coordinates
+     * will be in camera space and the Z coordinate will contain the correct depth value.
+     * @param point {RS.Vector4} The point to transform.
+     * @param result {RS.Vector4} Receives the result of the transform.
+     * @return {RS.Vector4} The projected point.
+     */
+    project_point(point, result) {
+        this.transform_point(point, result);
+        if (!this.orthographic) {
+            result.x = result.x * this.focal / -result.z;
+            result.y = result.y * this.focal / -result.z;
+        }
+        return result;
+    }
+
+    /**
+     * Projects a world space point to a pixel coordinate. X/Y origin will be at the
+     * bottom left and Z coordinate will contain the correct depth value.
+     * @example
+     * // Project point <1,2,3> to Full HD resolution.
+     * const point = camera.project_point_to_pixel(new RS.Vector4(1,2,3), { x: 1920, y: 1080 }, new RS.Vector4()));
+     * @example
+     * // Project point <1,2,3> to Full HD resolution with rectangular pixels that have a 3:2 aspect ratio.
+     * const point = camera.project_point_to_pixel(new RS.Vector4(1,2,3), { x: 1920, y: 1080 }, 3/2, new RS.Vector4()));
+     * @param point {RS.Vector4} The point to transform.
+     * @param resolution {RS.Vector2} The image resolution to project to.
+     * @param pixel_aspect_ratio {Number=} If provided the pixel aspect ratio to use, otherwise use 1.
+     * This would typically only be provided if non-square pixels are used.
+     * @param result {RS.Vector4} Receives the result of the transform.
+     * @return {RS.Vector4} The projected point.
+     */
+    project_point_to_pixel(point, resolution, pixel_aspect_ratio, result) {
+        if (result === undefined) {
+            result = pixel_aspect_ratio;
+            pixel_aspect_ratio = 1;
+        }
+        this.project_point(point, result);
+        const aspect = (resolution.x / resolution.y) * pixel_aspect_ratio;
+        result.x = resolution.x * (0.5 + result.x / this.aperture);
+        result.y = resolution.y * (0.5 + result.y / (this.aperture / aspect));
+
         return result;
     }
 
