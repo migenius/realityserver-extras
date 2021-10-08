@@ -14,7 +14,8 @@
     "build:doc": "jsdoc -c .jsdoc.conf.js",
     "eslint": "eslint src scripts test",
     "test": "jest",
-    "build:publish": "bash scripts/publish.sh"
+    "build:publish": "bash scripts/publish.sh",
+    "mk-release-branch": "bash scripts/mk-release-branch.sh"
   },
   "repository": {
     "type": "git",
