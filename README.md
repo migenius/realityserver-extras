@@ -17,3 +17,17 @@ Download the [minified](https://unpkg.com/@migenius/realityserver-extras@1.0.5 "
 ## API Documentation
 
 The RealityServer Extras API documentation can be found [here](https://migenius.github.io/realityserver-extras/ "RealityServer Extras").
+
+## Release Notes
+
+## 1.0.6
+
+Added RS.Camera.project_point and RS.Camera.project_point_to_pixel to project world points to screen space.
+
+Fix bug in RS.Camera.set_from_object where `transform` property was not assigned correctly. `transform` can now be an actual `RS.Target_transform` or a matrix. The `matrix` property is not also supported.
+
+Added RS.Camera.transform_point_to_world and RS.Camera.look_at_target_point.
+
+Made RS.Transform_target.look_at_target_point a public function.
+
+Updated to depend on realityserver-client 1.0.9.
