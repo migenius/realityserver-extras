@@ -24,7 +24,7 @@ The RealityServer Extras API documentation can be found [here](https://migenius.
 
 Reduce size of built library
 
-Rotations around an axis in Camera/Transform/Transform_target now perform around the normalized axis.
+Rotations around an axis in Camera/Transform/Transform_target are now performed around the normalized axis.
 
 ## 1.0.6
 
