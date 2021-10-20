@@ -12,7 +12,8 @@ fs.removeSync('./lib');
 
 const pre_rollup_plugins = [
     require('@rollup/plugin-commonjs')(),
-    require('@rollup/plugin-node-resolve').nodeResolve
+    require('@rollup/plugin-node-resolve').nodeResolve,
+    require('rollup-plugin-cleanup')()
 ];
 
 const production_rollup_plugins = [
