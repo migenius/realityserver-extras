@@ -460,7 +460,7 @@ class Transform {
             axis = axis.clone().rotate_transpose(this.world_to_obj);
         }
 
-        m.set_rotation(axis, angle);
+        m.set_rotation(axis.clone().normalize(), angle);
         for (let i = 0; i < rotation_vectors.length; i++) {
             rotation_vectors[i].rotate(m);
         }
