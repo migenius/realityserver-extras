@@ -3,7 +3,7 @@
  *****************************************************************************/
 import { Transform } from './Transform';
 import { Transform_target } from './Transform_target';
-import { Utils } from '@migenius/realityserver-client';
+import { Matrix4x4, Utils, Vector3, Vector4  } from '@migenius/realityserver-client';
 
 /**
  * The Camera class allows simple camera manipulation. Events are emitted whenever
@@ -425,8 +425,8 @@ class Camera extends Utils.EventEmitter {
      */
     transform_direction(direction, result) {
         const world_to_cam = this.transform.world_to_obj;
-        const my_dir = direction.clone();
-        result.set(my_dir.rotate(world_to_cam));
+        direction = direction.clone();
+        result.set(direction.rotate(world_to_cam));
         return result;
     }
 
@@ -829,6 +829,137 @@ class Camera extends Utils.EventEmitter {
         }
     }
 
+    /**
+     * Frames the camera around a set of points such that all points provided are
+     * visible within the camera frame.
+     *
+     * @param {RS.Vector3} fit_points An array of RS.Vector3 points that the camera will be framed around.
+     * @param {Number} fit_scaling Scales the bounding box around the points for a closer or further fitted
+     * frame. For example 1.2 increases padding between the points and the camera frame, whereas 0.8 indicates
+     * less padding and may occlude some points.
+     * @param {Number} aspect The aspect ratio of the camera frame.
+     * @param {Boolean=} preserve_orientation When true the camera will keep pointing in the same direction, if
+     * false it will rotate to look at the center of the points.
+     * @fires RS.Camera#target_point-changed
+     * @fires RS.Camera#transform-changed
+     */
+    frame_points(fit_points, fit_scaling, aspect, preserve_orientation = true) {
+
+        if(fit_points.length == 0) {
+            return;
+        }
+
+        const bounding_box = {
+            min: new Vector3(
+                fit_points.reduce((prev, curr) => prev.x < curr.x ? prev : curr).x,
+                fit_points.reduce((prev, curr) => prev.y < curr.y ? prev : curr).y,
+                fit_points.reduce((prev, curr) => prev.z < curr.z ? prev : curr).z),
+            max: new Vector3(
+                fit_points.reduce((prev, curr) => prev.x > curr.x ? prev : curr).x,
+                fit_points.reduce((prev, curr) => prev.y > curr.y ? prev : curr).y,
+                fit_points.reduce((prev, curr) => prev.z > curr.z ? prev : curr).z)};
+        
+        // Scale bounding
+        bounding_box.size = bounding_box.max.clone().subtract(bounding_box.min);
+        bounding_box.center = bounding_box.min.clone().add(bounding_box.size.clone().scale(0.5));
+        bounding_box.size.scale(fit_scaling);
+        bounding_box.min.set(bounding_box.center.clone().subtract(bounding_box.size.clone().scale(0.5)));
+        bounding_box.max.set(bounding_box.min.clone().add(bounding_box.size));
+
+        const cam_matrix = this.matrix;
+
+        if (preserve_orientation) {
+            // camera keeps looking in the same direction
+            // Calculate the forward direction.
+            const forward = new Vector3(0, 0, -1);
+            forward.rotate(cam_matrix.clone().invert());
+            const location = new Vector3(bounding_box.center);
+            // Multiply by -1 for use in the transform matrix.
+            location.subtract(forward.clone().scale(bounding_box.size.length())).scale(-1);
+            location.rotate(cam_matrix);
+
+            // Set the location of the camera.
+            cam_matrix.set_translation(location.x, location.y, location.z);
+        } else {
+            // camera spins to look at bounding box centre, code from iview
+            // camera location
+            const location = new Vector4(0, 0, 0);
+            location.transform(cam_matrix.clone().invert());
+
+            // Make sure the position of the camera is not on the center of the bbox
+            if (location.x == bounding_box.center.x && location.z == bounding_box.center.z) {
+                location.z = bounding_box.center.z + 10;
+            }
+
+            const up = new Vector3(cam_matrix.xy, cam_matrix.yy, cam_matrix.zy);
+
+            const transform_target = new Transform_target(location, bounding_box.center, up);
+            transform_target.look_at_target_point(true);
+            cam_matrix.set(transform_target.world_to_obj);
+        }
+        
+        const horizontal_aperture = this.aperture * 0.5;
+        const vertical_aperture = horizontal_aperture / aspect;
+
+        let max_point_x = new Vector3(0,0,0);
+        let max_point_y = new Vector3(0,0,0);
+
+        let max_projected_x = -1;
+        let max_projected_y = -1;
+
+        // Loop through each point and find the most distant x and y points of the projected
+        // bounding box.
+        for(let i = 0; i < fit_points.length; i++) {
+            
+            let proj_x = 0;
+            let proj_y = 0;
+
+            const v = new Vector4(fit_points[i]);
+            v.transform(cam_matrix);
+            
+            if (v.z != 0 && !this.orthographic) {
+                proj_x = Math.abs(v.x / (v.z / this.focal)) / horizontal_aperture;
+                proj_y = Math.abs(v.y / (v.z / this.focal)) / vertical_aperture;
+            }
+            else {
+                proj_x = Math.abs(v.x);
+                proj_y = Math.abs(v.y);
+            }
+            if (proj_x > max_projected_x) {
+                max_projected_x = proj_x;
+                max_point_x.set(v);
+            }
+            if (proj_y > max_projected_y) {
+                max_projected_y = proj_y;
+                max_point_y.set(v);
+            }
+        }
+
+        if (this.orthographic) {
+            if (max_projected_x > max_projected_y * aspect) {
+                this.aperture = max_projected_x * 2;
+            }
+            else {
+                this.aperture = max_projected_y * 2 * aspect;
+            }
+        }
+        else {
+            let dolly = 0;
+
+            if (max_projected_x > max_projected_y) {
+                dolly = Math.abs(max_point_x.x) / (horizontal_aperture / this.focal);
+                dolly = dolly + max_point_x.z;
+            }
+            else {
+                dolly = Math.abs(max_point_y.y) / (vertical_aperture/ this.focal);
+                dolly = dolly + max_point_y.z;
+            }
+            
+            cam_matrix.translate(0, 0, -dolly);
+        }
+
+        this.matrix = cam_matrix;;
+    }
 }
 
 export { Camera };
