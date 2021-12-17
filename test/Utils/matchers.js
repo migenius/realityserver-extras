@@ -5,8 +5,8 @@
 const float_tolerance = 10e-8;
 
 expect.extend({
-    toBeMatrix4x4(received, expected) {
-        const pass = expected.equal(received, float_tolerance);
+    toBeMatrix4x4(received, expected, tolerance = float_tolerance) {
+        const pass = expected.equal(received, tolerance);
         if (pass) {
             return {
                 message: () =>
@@ -23,7 +23,7 @@ expect.extend({
                         'wx', 'wy', 'wz', 'ww' ].forEach(prop => {
                         if (received[prop] === undefined) {
                             message += `  ${prop} is undefined, should be ${expected[prop]}\n`;
-                        } else if (Math.abs(expected[prop] - received[prop]) > float_tolerance ) {
+                        } else if (Math.abs(expected[prop] - received[prop]) > tolerance ) {
                             message += `  ${prop} is ${received[prop]}, should be ${expected[prop]}\n`;
                         }
                     });
@@ -33,8 +33,8 @@ expect.extend({
             };
         }
     },
-    toBeVector4(received, expected) {
-        const pass = expected.equal(received, float_tolerance);
+    toBeVector4(received, expected, tolerance = float_tolerance) {
+        const pass = expected.equal(received, tolerance);
         if (pass) {
             return {
                 message: () =>
@@ -48,7 +48,7 @@ expect.extend({
                     [ 'x', 'y', 'z', 'w' ].forEach(prop => {
                         if (received[prop] === undefined) {
                             message += `  ${prop} is undefined, should be ${expected[prop]}\n`;
-                        } else if (Math.abs(expected[prop] - received[prop]) > float_tolerance ) {
+                        } else if (Math.abs(expected[prop] - received[prop]) > tolerance ) {
                             message += `  ${prop} is ${received[prop]}, should be ${expected[prop]}\n`;
                         }
                     });
@@ -58,8 +58,8 @@ expect.extend({
             };
         }
     },
-    toBeVector3(received, expected) {
-        const pass = expected.equal(received, float_tolerance);
+    toBeVector3(received, expected, tolerance = float_tolerance) {
+        const pass = expected.equal(received, tolerance);
         if (pass) {
             return {
                 message: () =>
@@ -73,7 +73,7 @@ expect.extend({
                     [ 'x', 'y', 'z' ].forEach(prop => {
                         if (received[prop] === undefined) {
                             message += `  ${prop} is undefined, should be ${expected[prop]}\n`;
-                        } else if (Math.abs(expected[prop] - received[prop]) > float_tolerance ) {
+                        } else if (Math.abs(expected[prop] - received[prop]) > tolerance ) {
                             message += `  ${prop} is ${received[prop]}, should be ${expected[prop]}\n`;
                         }
                     });
@@ -83,8 +83,8 @@ expect.extend({
             };
         }
     },
-    toBeQuaternion(received, expected) {
-        let pass = expected.equal(received, float_tolerance);
+    toBeQuaternion(received, expected, tolerance = float_tolerance) {
+        let pass = expected.equal(received, tolerance);
         if (!pass) {
             // negate one of the quaternions and test again since negated quaternions are rotationally equivalent.
             const neg_received = received.clone();
@@ -92,7 +92,7 @@ expect.extend({
             neg_received.y *= -1;
             neg_received.z *= -1;
             neg_received.w *= -1;
-            pass = expected.equal(neg_received, float_tolerance);
+            pass = expected.equal(neg_received, tolerance);
         }
         if (pass) {
             return {
@@ -107,7 +107,7 @@ expect.extend({
                     [ 'x', 'y', 'z', 'w' ].forEach(prop => {
                         if (received[prop] === undefined) {
                             message += `  ${prop} is undefined, should be ${expected[prop]}\n`;
-                        } else if (Math.abs(expected[prop] - received[prop]) > float_tolerance ) {
+                        } else if (Math.abs(expected[prop] - received[prop]) > tolerance ) {
                             message += `  ${prop} is ${received[prop]}, should be ${expected[prop]}\n`;
                         }
                     });
@@ -117,8 +117,8 @@ expect.extend({
             };
         }
     },
-    toBeEuler(received, expected) {
-        const pass = expected.equal(received, float_tolerance);
+    toBeEuler(received, expected, tolerance = float_tolerance) {
+        const pass = expected.equal(received, tolerance);
         if (pass) {
             return {
                 message: () =>
@@ -132,7 +132,7 @@ expect.extend({
                     [ 'x', 'y', 'z' ].forEach(prop => {
                         if (received[prop] === undefined) {
                             message += `  ${prop} is undefined, should be ${expected[prop]}\n`;
-                        } else if (Math.abs(expected[prop] - received[prop]) > float_tolerance ) {
+                        } else if (Math.abs(expected[prop] - received[prop]) > tolerance ) {
                             message += `  ${prop} is ${received[prop]}, should be ${expected[prop]}\n`;
                         }
                     });

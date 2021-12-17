@@ -958,7 +958,8 @@ class Camera extends Utils.EventEmitter {
             cam_matrix.translate(0, 0, -dolly);
         }
 
-        this.matrix = cam_matrix;;
+        this.matrix = cam_matrix;
+        this.target_point = bounding_box.center;
     }
 }
 
