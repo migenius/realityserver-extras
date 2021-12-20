@@ -1976,3 +1976,75 @@ test('frame camera off center roll ortho', () => {
         -0.911, -0.4057, 0.0742, 0.0000,
         -0.0959, -0.0427, -1.4103, 1.0000), 0.0001);
 });
+
+
+test('frame camera off center roll preserve orient', () => {
+
+    const camera = new Camera();
+    camera.follow_target_point = false;
+    camera.scene_up_direction = Camera.Y_UP;
+    const camera_data = { 'orthographic': false, 'aperture': 1.7, 'focal': 1.5, 'clip_min': -1, 'clip_max': 10000 };
+
+    const transform_target = new Transform_target();
+    transform_target.look_at(new Vector3(1, 1, 0), new Vector3(0, 0, 1), new Vector3(-1, 0, 0));
+    camera_data.transform = transform_target.world_to_obj;
+
+    camera.set_from_object(camera_data);
+
+    const points = [
+        new Vector3(-0.7, -0.5, -0.6), new Vector3(-0.7, -0.5, 0.4), new Vector3(-0.7, 0.6, -0.6), new Vector3(-0.7, 0.6, 0.4),
+        new Vector3(0.8, -0.5, -0.6), new Vector3(0.8, -0.5, 0.4), new Vector3(0.8, 0.6, -0.6), new Vector3(0.8, 0.6, 0.4)];
+    
+    camera.frame_points(points, 1, 1.4, true);
+
+    expect(camera.aperture).toBeCloseTo(1.7);
+    expect(camera.focal).toBeCloseTo(1.5);
+    expect(camera.orthographic).toBeFalsy();
+
+    // The target point should be the center of the bounding box.
+    expect(camera.target_point).toBeVector3(new Vector3(0.05, 0.05, -0.1));
+    
+    // The location should be at the center of the bounding box for x and y, and 
+    // then the center of the bounding box's z minus the length of the diagonal of the bounding box.
+    expect(camera.matrix).toBeMatrix4x4(new Matrix4x4(
+        0.0000, -0.8164, 0.5774, 0.0000, 
+       -0.7071, 0.4082, 0.5774, 0.0000,
+       -0.7071, -0.4082, -0.5774, 0.0000,
+       -0.0354, -0.0204, -2.8606, 1.0000), 0.0001);
+});
+
+
+test('frame camera off center roll preserve orient ortho', () => {
+
+    const camera = new Camera();
+    camera.follow_target_point = false;
+    camera.scene_up_direction = Camera.Y_UP;
+    const camera_data = { 'orthographic': true, 'aperture': 1.7, 'focal': 1.5, 'clip_min': -1, 'clip_max': 10000 };
+
+    const transform_target = new Transform_target();
+    transform_target.look_at(new Vector3(1, 1, 0), new Vector3(0, 0, 1), new Vector3(-1, 0, 0));
+    camera_data.transform = transform_target.world_to_obj;
+
+    camera.set_from_object(camera_data);
+
+    const points = [
+        new Vector3(-0.7, -0.5, -0.6), new Vector3(-0.7, -0.5, 0.4), new Vector3(-0.7, 0.6, -0.6), new Vector3(-0.7, 0.6, 0.4),
+        new Vector3(0.8, -0.5, -0.6), new Vector3(0.8, -0.5, 0.4), new Vector3(0.8, 0.6, -0.6), new Vector3(0.8, 0.6, 0.4)];
+    
+    camera.frame_points(points, 1, 1.4, true);
+
+    expect(camera.aperture).toBeCloseTo(2.9149);
+    expect(camera.focal).toBeCloseTo(1.5);
+    expect(camera.orthographic).toBeTruthy();
+
+    // The target point should be the center of the bounding box.
+    expect(camera.target_point).toBeVector3(new Vector3(0.05, 0.05, -0.1));
+    
+    // The location should be at the center of the bounding box for x and y, and 
+    // then the center of the bounding box's z minus the length of the diagonal of the bounding box.
+    expect(camera.matrix).toBeMatrix4x4(new Matrix4x4(
+        0.0000, -0.8164, 0.5774, 0.0000, 
+        -0.7071, 0.4082, 0.5774, 0.0000, 
+        -0.7071, -0.4082, -0.5774, 0.0000, 
+        -0.0354, -0.0204, -2.2273, 1.0000), 0.0001);
+});
