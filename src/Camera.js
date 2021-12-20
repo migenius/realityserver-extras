@@ -894,7 +894,7 @@ class Camera extends Utils.EventEmitter {
             const up = new Vector3(cam_matrix.xy, cam_matrix.yy, cam_matrix.zy);
 
             const transform_target = new Transform_target(location, bounding_box.center, up);
-            transform_target.look_at_target_point(true);
+            transform_target.look_at_target_point(false);
             cam_matrix.set(transform_target.world_to_obj);
         }
         
