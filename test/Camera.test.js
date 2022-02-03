@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright 2010-2021 migenius pty ltd, Australia. All rights reserved.
+ * Copyright 2010-2022 migenius pty ltd, Australia. All rights reserved.
  *****************************************************************************/
 /* eslint-disable max-len */
 import { Camera } from '../src/Camera';
@@ -1779,9 +1779,9 @@ test('frame camera simple ortho', () => {
 
     const points = [
         new Vector3(0, 0, 0), new Vector3(0, 0, 1), new Vector3(0, 1, 0), new Vector3(0, 1, 1),
-        new Vector3(1, 0, 0), new Vector3(1, 0, 1), new Vector3(1, 1, 0), new Vector3(1, 1, 1)];
-    
-    camera.frame_points(points, 1, 1);
+        new Vector3(1, 0, 0), new Vector3(1, 0, 1), new Vector3(1, 1, 0), new Vector3(1, 1, 1) ];
+
+    camera.frame_points(points, 1);
 
     // The aperture should be at 1 to fit the bounding box of this size, from this angle.
     expect(camera.aperture).toBeCloseTo(1);
@@ -1790,14 +1790,14 @@ test('frame camera simple ortho', () => {
 
     // The target point should be the center of the bounding box.
     expect(camera.target_point).toBeVector3(new Vector3(0.5, 0.5, 0.5));
-    
-    // The location should be at the center of the bounding box for x and y, and 
+
+    // The location should be at the center of the bounding box for x and y, and
     // then the center of the bounding box's z minus the length of the diagonal of the bounding box.
     expect(camera.matrix).toBeMatrix4x4(new Matrix4x4(
-        1,0,0,0,
-        0,1,0,0,
-        0,0,1,0,
-        -0.5,-0.5,-Math.sqrt(3) - 0.5, 1));
+        1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        -0.5, -0.5, -Math.sqrt(3) - 0.5, 1));
 });
 
 
@@ -1812,9 +1812,9 @@ test('frame camera simple', () => {
 
     const points = [
         new Vector3(0, 0, 0), new Vector3(0, 0, 1), new Vector3(0, 1, 0), new Vector3(0, 1, 1),
-        new Vector3(1, 0, 0), new Vector3(1, 0, 1), new Vector3(1, 1, 0), new Vector3(1, 1, 1)];
-    
-    camera.frame_points(points, 1, 1);
+        new Vector3(1, 0, 0), new Vector3(1, 0, 1), new Vector3(1, 1, 0), new Vector3(1, 1, 1) ];
+
+    camera.frame_points(points, 1);
 
     // The aperture should be at 1 to fit the bounding box of this size, from this angle.
     expect(camera.aperture).toBeCloseTo(2);
@@ -1823,14 +1823,14 @@ test('frame camera simple', () => {
 
     // The target point should be the center of the bounding box.
     expect(camera.target_point).toBeVector3(new Vector3(0.5, 0.5, 0.5));
-    
-    // The location should be at the center of the bounding box for x and y, and 
+
+    // The location should be at the center of the bounding box for x and y, and
     // then the center of the bounding box's z minus the length of the diagonal of the bounding box.
     expect(camera.matrix).toBeMatrix4x4(new Matrix4x4(
-        1,0,0,0,
-        0,1,0,0,
-        0,0,1,0,
-        -0.5,-0.5,-1.5, 1));
+        1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        -0.5, -0.5, -1.5, 1));
 });
 
 
@@ -1849,9 +1849,9 @@ test('frame camera off center', () => {
 
     const points = [
         new Vector3(-0.7, -0.5, -0.6), new Vector3(-0.7, -0.5, 0.4), new Vector3(-0.7, 0.6, -0.6), new Vector3(-0.7, 0.6, 0.4),
-        new Vector3(0.8, -0.5, -0.6), new Vector3(0.8, -0.5, 0.4), new Vector3(0.8, 0.6, -0.6), new Vector3(0.8, 0.6, 0.4)];
-    
-    camera.frame_points(points, 1, 1.4);
+        new Vector3(0.8, -0.5, -0.6), new Vector3(0.8, -0.5, 0.4), new Vector3(0.8, 0.6, -0.6), new Vector3(0.8, 0.6, 0.4) ];
+
+    camera.frame_points(points, 1.4);
 
     expect(camera.aperture).toBeCloseTo(1.7);
     expect(camera.focal).toBeCloseTo(1.5);
@@ -1859,14 +1859,14 @@ test('frame camera off center', () => {
 
     // The target point should be the center of the bounding box.
     expect(camera.target_point).toBeVector3(new Vector3(0.05, 0.05, -0.1));
-    
-    // The location should be at the center of the bounding box for x and y, and 
+
+    // The location should be at the center of the bounding box for x and y, and
     // then the center of the bounding box's z minus the length of the diagonal of the bounding box.
     expect(camera.matrix).toBeMatrix4x4(new Matrix4x4(
-        -0.7071,-0.4082,0.5774,0,
-        0,0.8164,0.5774,0,
-        -0.7071,0.4082,-0.5774,0,
-        -0.0354,0.0204,-2.8899, 1), 0.0001);
+        -0.7071, -0.4082, 0.5774, 0,
+        0, 0.8164, 0.5774, 0,
+        -0.7071, 0.4082, -0.5774, 0,
+        -0.0354, 0.0204, -2.8899, 1), 0.0001);
 });
 
 
@@ -1880,14 +1880,14 @@ test('frame camera off center ortho', () => {
     const transform_target = new Transform_target();
     transform_target.look_at(new Vector3(1, 1, 0), new Vector3(0, 0, 1), new Vector3(0, 1, 0));
     camera_data.transform = transform_target.world_to_obj;
-    
+
     camera.set_from_object(camera_data);
 
     const points = [
         new Vector3(-0.7, -0.5, -0.6), new Vector3(-0.7, -0.5, 0.4), new Vector3(-0.7, 0.6, -0.6), new Vector3(-0.7, 0.6, 0.4),
-        new Vector3(0.8, -0.5, -0.6), new Vector3(0.8, -0.5, 0.4), new Vector3(0.8, 0.6, -0.6), new Vector3(0.8, 0.6, 0.4)];
-    
-    camera.frame_points(points, 1, 1.4);
+        new Vector3(0.8, -0.5, -0.6), new Vector3(0.8, -0.5, 0.4), new Vector3(0.8, 0.6, -0.6), new Vector3(0.8, 0.6, 0.4) ];
+
+    camera.frame_points(points, 1.4);
 
     expect(camera.aperture).toBeCloseTo(2.6863);
     expect(camera.focal).toBeCloseTo(1.5);
@@ -1895,14 +1895,14 @@ test('frame camera off center ortho', () => {
 
     // The target point should be the center of the bounding box.
     expect(camera.target_point).toBeVector3(new Vector3(0.05, 0.05, -0.1));
-    
-    // The location should be at the center of the bounding box for x and y, and 
+
+    // The location should be at the center of the bounding box for x and y, and
     // then the center of the bounding box's z minus the length of the diagonal of the bounding box.
     expect(camera.matrix).toBeMatrix4x4(new Matrix4x4(
-        -0.7071,-0.4082,0.5774,0,
-        0,0.8164,0.5774,0,
-        -0.7071,0.4082,-0.5774,0,
-        -0.0354,0.0204,-2.2273, 1), 0.0001);
+        -0.7071, -0.4082, 0.5774, 0,
+        0, 0.8164, 0.5774, 0,
+        -0.7071, 0.4082, -0.5774, 0,
+        -0.0354, 0.0204, -2.2273, 1), 0.0001);
 });
 
 
@@ -1921,9 +1921,9 @@ test('frame camera off center roll', () => {
 
     const points = [
         new Vector3(-0.7, -0.5, -0.6), new Vector3(-0.7, -0.5, 0.4), new Vector3(-0.7, 0.6, -0.6), new Vector3(-0.7, 0.6, 0.4),
-        new Vector3(0.8, -0.5, -0.6), new Vector3(0.8, -0.5, 0.4), new Vector3(0.8, 0.6, -0.6), new Vector3(0.8, 0.6, 0.4)];
-    
-    camera.frame_points(points, 1, 1.4, false);
+        new Vector3(0.8, -0.5, -0.6), new Vector3(0.8, -0.5, 0.4), new Vector3(0.8, 0.6, -0.6), new Vector3(0.8, 0.6, 0.4) ];
+
+    camera.frame_points(points, 1.4, false);
 
     expect(camera.aperture).toBeCloseTo(1.7);
     expect(camera.focal).toBeCloseTo(1.5);
@@ -1931,8 +1931,8 @@ test('frame camera off center roll', () => {
 
     // The target point should be the center of the bounding box.
     expect(camera.target_point).toBeVector3(new Vector3(0.05, 0.05, -0.1));
-    
-    // The location should be at the center of the bounding box for x and y, and 
+
+    // The location should be at the center of the bounding box for x and y, and
     // then the center of the bounding box's z minus the length of the diagonal of the bounding box.
     expect(camera.matrix).toBeMatrix4x4(new Matrix4x4(
         0.3356, -0.6246, 0.7052, 0.0000,
@@ -1957,9 +1957,9 @@ test('frame camera off center roll ortho', () => {
 
     const points = [
         new Vector3(-0.7, -0.5, -0.6), new Vector3(-0.7, -0.5, 0.4), new Vector3(-0.7, 0.6, -0.6), new Vector3(-0.7, 0.6, 0.4),
-        new Vector3(0.8, -0.5, -0.6), new Vector3(0.8, -0.5, 0.4), new Vector3(0.8, 0.6, -0.6), new Vector3(0.8, 0.6, 0.4)];
-    
-    camera.frame_points(points, 1, 1.4, false);
+        new Vector3(0.8, -0.5, -0.6), new Vector3(0.8, -0.5, 0.4), new Vector3(0.8, 0.6, -0.6), new Vector3(0.8, 0.6, 0.4) ];
+
+    camera.frame_points(points, 1.4, false);
 
     expect(camera.aperture).toBeCloseTo(2.9073);
     expect(camera.focal).toBeCloseTo(1.5);
@@ -1967,8 +1967,8 @@ test('frame camera off center roll ortho', () => {
 
     // The target point should be the center of the bounding box.
     expect(camera.target_point).toBeVector3(new Vector3(0.05, 0.05, -0.1));
-    
-    // The location should be at the center of the bounding box for x and y, and 
+
+    // The location should be at the center of the bounding box for x and y, and
     // then the center of the bounding box's z minus the length of the diagonal of the bounding box.
     expect(camera.matrix).toBeMatrix4x4(new Matrix4x4(
         0.3356, -0.6246, 0.7052, 0.0000,
@@ -1993,9 +1993,9 @@ test('frame camera off center roll preserve orient', () => {
 
     const points = [
         new Vector3(-0.7, -0.5, -0.6), new Vector3(-0.7, -0.5, 0.4), new Vector3(-0.7, 0.6, -0.6), new Vector3(-0.7, 0.6, 0.4),
-        new Vector3(0.8, -0.5, -0.6), new Vector3(0.8, -0.5, 0.4), new Vector3(0.8, 0.6, -0.6), new Vector3(0.8, 0.6, 0.4)];
-    
-    camera.frame_points(points, 1, 1.4, true);
+        new Vector3(0.8, -0.5, -0.6), new Vector3(0.8, -0.5, 0.4), new Vector3(0.8, 0.6, -0.6), new Vector3(0.8, 0.6, 0.4) ];
+
+    camera.frame_points(points, 1.4, true);
 
     expect(camera.aperture).toBeCloseTo(1.7);
     expect(camera.focal).toBeCloseTo(1.5);
@@ -2003,14 +2003,14 @@ test('frame camera off center roll preserve orient', () => {
 
     // The target point should be the center of the bounding box.
     expect(camera.target_point).toBeVector3(new Vector3(0.05, 0.05, -0.1));
-    
-    // The location should be at the center of the bounding box for x and y, and 
+
+    // The location should be at the center of the bounding box for x and y, and
     // then the center of the bounding box's z minus the length of the diagonal of the bounding box.
     expect(camera.matrix).toBeMatrix4x4(new Matrix4x4(
-        0.0000, -0.8164, 0.5774, 0.0000, 
-       -0.7071, 0.4082, 0.5774, 0.0000,
-       -0.7071, -0.4082, -0.5774, 0.0000,
-       -0.0354, -0.0204, -2.8606, 1.0000), 0.0001);
+        0.0000, -0.8164, 0.5774, 0.0000,
+        -0.7071, 0.4082, 0.5774, 0.0000,
+        -0.7071, -0.4082, -0.5774, 0.0000,
+        -0.0354, -0.0204, -2.8606, 1.0000), 0.0001);
 });
 
 
@@ -2029,9 +2029,9 @@ test('frame camera off center roll preserve orient ortho', () => {
 
     const points = [
         new Vector3(-0.7, -0.5, -0.6), new Vector3(-0.7, -0.5, 0.4), new Vector3(-0.7, 0.6, -0.6), new Vector3(-0.7, 0.6, 0.4),
-        new Vector3(0.8, -0.5, -0.6), new Vector3(0.8, -0.5, 0.4), new Vector3(0.8, 0.6, -0.6), new Vector3(0.8, 0.6, 0.4)];
-    
-    camera.frame_points(points, 1, 1.4, true);
+        new Vector3(0.8, -0.5, -0.6), new Vector3(0.8, -0.5, 0.4), new Vector3(0.8, 0.6, -0.6), new Vector3(0.8, 0.6, 0.4) ];
+
+    camera.frame_points(points, 1.4, true);
 
     expect(camera.aperture).toBeCloseTo(2.9149);
     expect(camera.focal).toBeCloseTo(1.5);
@@ -2039,12 +2039,12 @@ test('frame camera off center roll preserve orient ortho', () => {
 
     // The target point should be the center of the bounding box.
     expect(camera.target_point).toBeVector3(new Vector3(0.05, 0.05, -0.1));
-    
-    // The location should be at the center of the bounding box for x and y, and 
+
+    // The location should be at the center of the bounding box for x and y, and
     // then the center of the bounding box's z minus the length of the diagonal of the bounding box.
     expect(camera.matrix).toBeMatrix4x4(new Matrix4x4(
-        0.0000, -0.8164, 0.5774, 0.0000, 
-        -0.7071, 0.4082, 0.5774, 0.0000, 
-        -0.7071, -0.4082, -0.5774, 0.0000, 
+        0.0000, -0.8164, 0.5774, 0.0000,
+        -0.7071, 0.4082, 0.5774, 0.0000,
+        -0.7071, -0.4082, -0.5774, 0.0000,
         -0.0354, -0.0204, -2.2273, 1.0000), 0.0001);
 });

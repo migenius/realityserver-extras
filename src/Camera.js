@@ -1,9 +1,9 @@
 /******************************************************************************
- * Copyright 2010-2020 migenius pty ltd, Australia. All rights reserved.
+ * Copyright 2010-2022 migenius pty ltd, Australia. All rights reserved.
  *****************************************************************************/
 import { Transform } from './Transform';
 import { Transform_target } from './Transform_target';
-import { Matrix4x4, Utils, Vector3, Vector4  } from '@migenius/realityserver-client';
+import { Utils, Vector3, Vector4  } from '@migenius/realityserver-client';
 
 /**
  * The Camera class allows simple camera manipulation. Events are emitted whenever
@@ -834,18 +834,15 @@ class Camera extends Utils.EventEmitter {
      * visible within the camera frame.
      *
      * @param {RS.Vector3} fit_points An array of RS.Vector3 points that the camera will be framed around.
-     * @param {Number} fit_scaling Scales the bounding box around the points for a closer or further fitted
-     * frame. For example 1.2 increases padding between the points and the camera frame, whereas 0.8 indicates
-     * less padding and may occlude some points.
      * @param {Number} aspect The aspect ratio of the camera frame.
      * @param {Boolean=} preserve_orientation When true the camera will keep pointing in the same direction, if
      * false it will rotate to look at the center of the points.
      * @fires RS.Camera#target_point-changed
      * @fires RS.Camera#transform-changed
      */
-    frame_points(fit_points, fit_scaling, aspect, preserve_orientation = true) {
+    frame_points(fit_points, aspect, preserve_orientation = true) {
 
-        if(fit_points.length == 0) {
+        if (fit_points.length === 0) {
             return;
         }
 
@@ -857,12 +854,11 @@ class Camera extends Utils.EventEmitter {
             max: new Vector3(
                 fit_points.reduce((prev, curr) => prev.x > curr.x ? prev : curr).x,
                 fit_points.reduce((prev, curr) => prev.y > curr.y ? prev : curr).y,
-                fit_points.reduce((prev, curr) => prev.z > curr.z ? prev : curr).z)};
-        
+                fit_points.reduce((prev, curr) => prev.z > curr.z ? prev : curr).z) };
+
         // Scale bounding
         bounding_box.size = bounding_box.max.clone().subtract(bounding_box.min);
         bounding_box.center = bounding_box.min.clone().add(bounding_box.size.clone().scale(0.5));
-        bounding_box.size.scale(fit_scaling);
         bounding_box.min.set(bounding_box.center.clone().subtract(bounding_box.size.clone().scale(0.5)));
         bounding_box.max.set(bounding_box.min.clone().add(bounding_box.size));
 
@@ -887,7 +883,7 @@ class Camera extends Utils.EventEmitter {
             location.transform(cam_matrix.clone().invert());
 
             // Make sure the position of the camera is not on the center of the bbox
-            if (location.x == bounding_box.center.x && location.z == bounding_box.center.z) {
+            if (location.x === bounding_box.center.x && location.z === bounding_box.center.z) {
                 location.z = bounding_box.center.z + 10;
             }
 
@@ -897,31 +893,30 @@ class Camera extends Utils.EventEmitter {
             transform_target.look_at_target_point(false);
             cam_matrix.set(transform_target.world_to_obj);
         }
-        
+
         const horizontal_aperture = this.aperture * 0.5;
         const vertical_aperture = horizontal_aperture / aspect;
 
-        let max_point_x = new Vector3(0,0,0);
-        let max_point_y = new Vector3(0,0,0);
+        let max_point_x = new Vector3(0, 0, 0);
+        let max_point_y = new Vector3(0, 0, 0);
 
         let max_projected_x = -1;
         let max_projected_y = -1;
 
         // Loop through each point and find the most distant x and y points of the projected
         // bounding box.
-        for(let i = 0; i < fit_points.length; i++) {
-            
+        for (let i = 0; i < fit_points.length; i++) {
+
             let proj_x = 0;
             let proj_y = 0;
 
             const v = new Vector4(fit_points[i]);
             v.transform(cam_matrix);
-            
-            if (v.z != 0 && !this.orthographic) {
+
+            if (v.z !== 0 && !this.orthographic) {
                 proj_x = Math.abs(v.x / (v.z / this.focal)) / horizontal_aperture;
                 proj_y = Math.abs(v.y / (v.z / this.focal)) / vertical_aperture;
-            }
-            else {
+            } else {
                 proj_x = Math.abs(v.x);
                 proj_y = Math.abs(v.y);
             }
@@ -938,23 +933,20 @@ class Camera extends Utils.EventEmitter {
         if (this.orthographic) {
             if (max_projected_x > max_projected_y * aspect) {
                 this.aperture = max_projected_x * 2;
-            }
-            else {
+            } else {
                 this.aperture = max_projected_y * 2 * aspect;
             }
-        }
-        else {
+        } else {
             let dolly = 0;
 
             if (max_projected_x > max_projected_y) {
                 dolly = Math.abs(max_point_x.x) / (horizontal_aperture / this.focal);
                 dolly = dolly + max_point_x.z;
-            }
-            else {
+            } else {
                 dolly = Math.abs(max_point_y.y) / (vertical_aperture/ this.focal);
                 dolly = dolly + max_point_y.z;
             }
-            
+
             cam_matrix.translate(0, 0, -dolly);
         }
 
