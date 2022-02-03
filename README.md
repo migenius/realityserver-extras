@@ -20,6 +20,10 @@ The RealityServer Extras API documentation can be found [here](https://migenius.
 
 ## Release Notes
 
+## 1.0.8
+
+Added RS.Camera.frame_points to allow framing the camera to a set of points.
+
 ## 1.0.7
 
 Reduce size of built library
