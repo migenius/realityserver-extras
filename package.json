@@ -13,7 +13,7 @@
     "build": "node scripts/build.js",
     "build:doc": "jsdoc -c .jsdoc.conf.js",
     "eslint": "eslint src scripts test",
-    "test": "jest",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "build:publish": "bash scripts/publish.sh",
     "mk-release-branch": "bash scripts/mk-release-branch.sh"
   },
@@ -36,21 +36,21 @@
   },
   "homepage": "https://github.com/migenius/realityserver-extras#readme",
   "devDependencies": {
-    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-env": "^7.18.2",
     "@migenius/jsdoc-template": "^1.0.1",
-    "@rollup/plugin-commonjs": "^17.0.0",
-    "@rollup/plugin-node-resolve": "^11.0.1",
-    "eslint": "^5.16.0",
-    "fs-extra": "^7.0.1",
-    "jest": "^24.9.0",
-    "jsdoc": "^3.6.6",
-    "rollup": "^2.36.1",
+    "@rollup/plugin-commonjs": "^17.1.0",
+    "@rollup/plugin-node-resolve": "^11.2.1",
+    "eslint": "^8.17.0",
+    "fs-extra": "^10.1.0",
+    "jest": "^28.1.1",
+    "jsdoc": "^3.6.10",
+    "rollup": "^2.75.6",
     "rollup-plugin-cleanup": "^3.2.1",
     "rollup-plugin-filesize": "^6.2.1",
     "rollup-plugin-terser": "^5.3.1"
   },
   "engines": {
-    "node": ">=6.5"
+    "node": ">=14.0"
   },
   "files": [
     "lib"
